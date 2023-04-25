@@ -2,7 +2,8 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import styles from "./Buyers.module.css";
 import Anchor from "@/components/Header/Anchor";
-export default function Buyers({ data }) {
+import Home from "..";
+export default function Buyers({ data }, {}) {
   const { query } = useRouter();
   console.log(data);
 
@@ -19,6 +20,7 @@ export default function Buyers({ data }) {
           <pre>
             <code>{JSON.stringify(query, null, 2)}</code>
           </pre>
+
           {data.map((buyer) => (
             <article key={buyer.id}>
               <p>Max price: {buyer.maxPrice}</p>

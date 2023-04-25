@@ -32,29 +32,49 @@ export default function Home() {
               building forms in Next.js
             </a>
           </p>
-          <form action="/buyers" method="GET" className={styles.form}>
-            <label>
-              <span className={styles.label}>Price</span>
-              <input name="price" required />
-            </label>
-            <label>
-              <span className={styles.label}>Size in square metres</span>
-              <input name="PropertySize" required></input>
-            </label>
-            <label>
-              <span className={styles.label}>Zip Code</span>
-              <input name="zipCode" required />
-            </label>
-            <label>
-              <span className={styles.label}>Property type</span>
-              <select name="PropertyType">
-                <EstOption />
-              </select>
-            </label>
-            <button className={styles.button}>Submit</button>
-          </form>
+          <SellerEstateForm />
         </div>
       </div>
     </>
+  );
+}
+
+export function SellerEstateForm() {
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+
+    /*     fetch("./buyers", { method: form.method, body: formData }); */
+
+    const formJson = Object.fromEntries(formData.entries());
+    console.log(formJson);
+  }
+
+  return (
+    <form method="GET" className={styles.form} onSubmit={handleSubmit}>
+      <label>
+        <span className={styles.label}>Price</span>
+        <input name="price" required />
+      </label>
+      <label>
+        <span className={styles.label}>Size in square metres</span>
+        <input name="propertySize" required></input>
+      </label>
+      <label>
+        <span className={styles.label}>Zip Code</span>
+        <input name="zipCode" required />
+      </label>
+      <label>
+        <span className={styles.label}>Property type</span>
+        <select name="propertyType">
+          <EstOption />
+        </select>
+      </label>
+      <button className={styles.button} type="submit">
+        Submit
+      </button>
+    </form>
   );
 }
