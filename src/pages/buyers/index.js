@@ -3,7 +3,8 @@ import { useRouter } from "next/router";
 import styles from "./Buyers.module.css";
 import Anchor from "@/components/Header/Anchor";
 import Home from "..";
-export default function Buyers({ data }, {}) {
+import Buyer from "@/components/Header/Buyer";
+export default function Buyers({ data }) {
   const { query } = useRouter();
   console.log(data);
 
@@ -22,11 +23,7 @@ export default function Buyers({ data }, {}) {
           </pre>
 
           {data.map((buyer) => (
-            <article key={buyer.id}>
-              <p>Max price: {buyer.maxPrice}</p>
-              <p>Buyer min size: {buyer.minSize}</p>
-              <p>Buyer description: {buyer.description}</p>
-            </article>
+            <Buyer key={data.id} {...buyer} />
           ))}
         </div>
       </div>
