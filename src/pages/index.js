@@ -1,6 +1,7 @@
 import Head from "next/head";
 import styles from "./Home.module.css";
 import EstOption from "@/components/Header/EstateOpt";
+import { use, useState } from "react";
 
 export default function Home() {
   return (
@@ -40,6 +41,7 @@ export default function Home() {
 }
 
 export function SellerEstateForm() {
+  const [sellerPropertyInfo, setSellerPropertyInfo] = useState([]);
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -50,13 +52,16 @@ export function SellerEstateForm() {
 
     const formJson = Object.fromEntries(formData.entries());
     console.log(formJson);
+    setSellerPropertyInfo((old) => old.push(formJson));
+
+    console.log("useState", sellerPropertyInfo);
   }
 
   return (
     <form method="GET" className={styles.form} onSubmit={handleSubmit}>
       <label>
         <span className={styles.label}>Price</span>
-        <input name="price" required />
+        <input name="price" required type="number" />
       </label>
       <label>
         <span className={styles.label}>Size in square metres</span>
