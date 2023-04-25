@@ -19,6 +19,13 @@ export default function Buyers({ data }) {
           <pre>
             <code>{JSON.stringify(query, null, 2)}</code>
           </pre>
+          {data.map((buyer) => (
+            <article key={buyer.id}>
+              <p>Max price: {buyer.maxPrice}</p>
+              <p>Buyer min size: {buyer.minSize}</p>
+              <p>Buyer description: {buyer.description}</p>
+            </article>
+          ))}
         </div>
       </div>
     </>
