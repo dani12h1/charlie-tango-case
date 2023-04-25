@@ -58,7 +58,12 @@ export function SellerEstateForm() {
   }
 
   return (
-    <form method="GET" className={styles.form} onSubmit={handleSubmit}>
+    <form
+      action="/buyers"
+      method="GET"
+      className={styles.form}
+      onSubmit={handleSubmit}
+    >
       <label>
         <span className={styles.label}>Price</span>
         <input name="price" required type="number" />
@@ -74,6 +79,7 @@ export function SellerEstateForm() {
       <label>
         <span className={styles.label}>Property type</span>
         <select name="propertyType">
+          <option value="">Please choose...</option>
           <EstOption />
         </select>
       </label>

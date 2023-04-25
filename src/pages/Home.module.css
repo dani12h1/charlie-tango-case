@@ -21,6 +21,9 @@
 }
 
 .form {
+  display: flex;
+  flex-direction: column;
+
   background-color: var(--dusty-blue-lighter);
   padding: 1rem;
 }
@@ -31,11 +34,19 @@
   display: block;
 }
 
-.form input {
+.form input,
+.form select {
   padding: 0.5rem;
 }
 
+.form select {
+  width: 200px;
+  background: var(--white);
+}
+
 .button {
+  width: 200px;
+  margin-top: 1rem;
   padding: 0.5rem;
   background: var(--blue);
   color: var(--white);
