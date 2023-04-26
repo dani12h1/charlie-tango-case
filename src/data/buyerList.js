@@ -1,5 +1,6 @@
 import React from "react";
 import Buyer from "@/components/Header/Buyer";
-function buyerList() {}
+
+function buyerList(buyer) {}
 
 export default buyerList;
