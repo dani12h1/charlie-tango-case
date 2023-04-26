@@ -48,3 +48,15 @@ body {
   padding: 0 1rem;
   margin: 0 auto;
 }
+
+.buyerContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 200px);
+  gap: 50px;
+  justify-content: center;
+}
+
+.buyerContainer > article {
+  background-color: var(--dusty-blue-lighter);
+  padding: 1rem;
+}

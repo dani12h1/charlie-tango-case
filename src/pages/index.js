@@ -41,22 +41,6 @@ export default function Home() {
 }
 
 export function SellerEstateForm() {
-  const [sellerPropertyInfo, setSellerPropertyInfo] = useState([]);
-  /* function handleSubmit(e) {
-    e.preventDefault();
-
-    const form = e.target;
-    const formData = new FormData(form);
-
-    fetch("./buyers", { method: form.method });
-
-    const formJson = Object.fromEntries(formData.entries());
-    console.log(formJson);
-    setSellerPropertyInfo((old) => old.push(formJson));
-
-    console.log("useState", sellerPropertyInfo);
-  } */
-
   return (
     <form
       action="/buyers"

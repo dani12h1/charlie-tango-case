@@ -1,8 +1,6 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import styles from "./Buyers.module.css";
-import Anchor from "@/components/Header/Anchor";
-import Home from "..";
 import Buyer from "@/components/Header/Buyer";
 export default function Buyers({ data }) {
   const { query } = useRouter();
@@ -22,9 +20,11 @@ export default function Buyers({ data }) {
             <code>{JSON.stringify(query, null, 2)}</code>
           </pre>
 
-          {data.map((buyer) => (
-            <Buyer key={data.id} {...buyer} />
-          ))}
+          <section className="buyerContainer">
+            {data.map((buyer) => (
+              <Buyer key={data.id} {...buyer} />
+            ))}
+          </section>
         </div>
       </div>
     </>
@@ -33,7 +33,7 @@ export default function Buyers({ data }) {
 
 export async function getServerSideProps(context) {
   console.log("context", context);
-  const api = `http://localhost:3001/api/find-buyers?price=${context.query.price}&propertySize=${context.query.minSize}&zipCode=${context.query.zipCode}&propertyType=${context.query.propertyType}`;
+  const api = `http://localhost:3000/api/find-buyers?price=${context.query.price}&propertySize=${context.query.minSize}&zipCode=${context.query.zipCode}&propertyType=${context.query.propertyType}`;
   const res = await fetch(api);
   const data = await res.json();
 
