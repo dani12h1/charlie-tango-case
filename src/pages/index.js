@@ -70,7 +70,7 @@ export function SellerEstateForm() {
       </label>
       <label>
         <span className={styles.label}>Size in square metres</span>
-        <input name="propertySize" required></input>
+        <input name="minSize" required></input>
       </label>
       <label>
         <span className={styles.label}>Zip Code</span>

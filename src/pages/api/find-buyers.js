@@ -13,12 +13,12 @@ export default function handler(req, res) {
   const zipCode = parseInt(req.query.zipCode || "2100");
   const estateType = parseInt(req.query.estateType);
   const price = parseInt(req.query.price);
-  const size = parseInt(req.query.size);
+  const minSize = parseInt(req.query.minSize);
   const profilesForZipCode = generateBuyerProfiles({
     zipCode,
     estateType,
     price,
-    size,
+    minSize,
   });
 
   // Set the cache headers, so that the response can be cached
