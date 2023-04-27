@@ -60,3 +60,7 @@ body {
   background-color: var(--dusty-blue-lighter);
   padding: 1rem;
 }
+
+.buyerCard:has(input[type="checkbox"]:checked) {
+  background-color: aqua;
+}

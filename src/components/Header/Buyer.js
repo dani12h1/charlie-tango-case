@@ -25,7 +25,7 @@ export default function Buyer(props) {
 
   // Card for the buyer
   return (
-    <article key={props.id}>
+    <article className="buyerCard" key={props.id}>
       <p>Buyer ID: #{props.id}</p>
       <p>Max price: {props.maxPrice}</p>
       <p>Buyer min size: {props.minSize}</p>
@@ -35,7 +35,7 @@ export default function Buyer(props) {
       <p>
         Household: {props.adults}/{props.children}
       </p>
-      <button onClick={addToList}>Add buyer</button>
+      <input type="checkbox" onClick={addToList} />
     </article>
   );
 }
