@@ -1,10 +1,9 @@
 import { DistpatchContext } from "@/contexts/buyerContext";
-import { useContext, useRef, useState } from "react";
+import { useContext, useRef } from "react";
 import { estateTypes } from "@/data/estateTypes";
 
 export default function Buyer(props) {
   const dispatch = useContext(DistpatchContext);
-  const [isChecked, setIsChecked] = useState(false);
   const checkboxRef = useRef(null);
 
   // The action object that is added to buyerList
@@ -17,8 +16,9 @@ export default function Buyer(props) {
         size: props.minSize,
       },
     });
-
-    setIsChecked(!isChecked);
+    if (checkboxRef.current) {
+      checkboxRef.current.checked = !checkboxRef.current.checked;
+    }
   }
 
   // Checks the estate type
@@ -39,12 +39,7 @@ export default function Buyer(props) {
       <p>
         Household: {props.adults} / {props.children}
       </p>
-      <input
-        type="checkbox"
-        onClick={addToList}
-        ref={checkboxRef}
-        checked={isChecked}
-      />
+      <input type="checkbox" onClick={addToList} ref={checkboxRef} />
     </article>
   );
 }
