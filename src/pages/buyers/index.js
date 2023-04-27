@@ -2,9 +2,20 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import styles from "./Buyers.module.css";
 import Buyer from "@/components/Header/Buyer";
+import { useEffect } from "react";
+import { DistpatchContext } from "@/contexts/buyerContext";
+import { useContext } from "react";
+
 export default function Buyers({ data }) {
+  const dispatch = useContext(DistpatchContext);
   const { query } = useRouter();
-  console.log(data);
+  useEffect(() => {
+    //dispatch
+    dispatch({
+      action: "SET_ESTATE_INFO",
+      payload: query,
+    });
+  });
 
   return (
     <>
@@ -32,8 +43,7 @@ export default function Buyers({ data }) {
 }
 
 export async function getServerSideProps(context) {
-  console.log("context", context);
-  const api = `http://localhost:3000/api/find-buyers?price=${context.query.price}&propertySize=${context.query.minSize}&zipCode=${context.query.zipCode}&propertyType=${context.query.propertyType}`;
+  const api = `http://localhost:3004/api/find-buyers?price=${context.query.price}&propertySize=${context.query.minSize}&zipCode=${context.query.zipCode}&propertyType=${context.query.propertyType}`;
   const res = await fetch(api);
   const data = await res.json();
 

@@ -1,7 +1,6 @@
 import Head from "next/head";
 import styles from "./Home.module.css";
 import EstOption from "@/components/Header/EstateOpt";
-import { useState } from "react";
 
 export default function Home() {
   return (
