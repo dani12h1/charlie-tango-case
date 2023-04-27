@@ -1,3 +1,4 @@
+import buyerList from "@/data/buyerList";
 import { createContext, useReducer } from "react";
 
 export const BuyerContext = createContext();
@@ -10,7 +11,7 @@ const initialState = {
   price: "",
 };
 
-function reducer(state, action) {
+export function reducer(state, action) {
   console.log(state);
 
   switch (action.action) {
@@ -35,7 +36,16 @@ function reducer(state, action) {
           buyersList: state.buyersList.concat(action.payload),
         };
       }
+
+    case "REMOVE_CHOSEN_BUYER":
+      return {
+        ...state,
+        buyersList: state.buyersList.filter(
+          (obj) => action.payload.id !== obj.id
+        ),
+      };
   }
+  return { ...state };
 }
 
 export const BuyerListProvider = ({ children }) => {
