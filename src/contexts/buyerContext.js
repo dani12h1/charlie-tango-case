@@ -12,6 +12,7 @@ const initialState = {
 
 function reducer(state, action) {
   console.log(state);
+
   switch (action.action) {
     case "SET_ESTATE_INFO":
       return state;

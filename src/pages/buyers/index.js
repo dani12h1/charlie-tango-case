@@ -5,6 +5,7 @@ import Buyer from "@/components/Header/Buyer";
 import { useEffect } from "react";
 import { DistpatchContext } from "@/contexts/buyerContext";
 import { useContext } from "react";
+import BuyersList from "@/components/Header/BuyersList";
 
 export default function Buyers({ data }) {
   const dispatch = useContext(DistpatchContext);
@@ -36,6 +37,7 @@ export default function Buyers({ data }) {
               <Buyer key={data.id} {...buyer} />
             ))}
           </section>
+          <button>Proceed</button>
         </div>
       </div>
     </>
