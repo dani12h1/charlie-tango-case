@@ -1,9 +1,11 @@
 import { DistpatchContext } from "@/contexts/buyerContext";
-import { useContext } from "react";
+import { useContext, useRef, useState } from "react";
 import { estateTypes } from "@/data/estateTypes";
 
 export default function Buyer(props) {
   const dispatch = useContext(DistpatchContext);
+  const [isChecked, setIsChecked] = useState(false);
+  const checkboxRef = useRef(null);
 
   // The action object that is added to buyerList
   function addToList() {
@@ -15,6 +17,8 @@ export default function Buyer(props) {
         size: props.minSize,
       },
     });
+
+    setIsChecked(!isChecked);
   }
 
   // Checks the estate type
@@ -25,7 +29,7 @@ export default function Buyer(props) {
 
   // Card for the buyer
   return (
-    <article className="buyerCard" key={props.id}>
+    <article onClick={addToList} className="buyerCard" key={props.id}>
       <p>Buyer ID: #{props.id}</p>
       <p>Max price: {props.maxPrice}</p>
       <p>Buyer min size: {props.minSize}</p>
@@ -33,9 +37,14 @@ export default function Buyer(props) {
       <p>Takeover date: {props.takeoverDate}</p>
       <p>Estate Type: {getEstateType(props.estateType)}</p>
       <p>
-        Household: {props.adults}/{props.children}
+        Household: {props.adults} / {props.children}
       </p>
-      <input type="checkbox" onClick={addToList} />
+      <input
+        type="checkbox"
+        onClick={addToList}
+        ref={checkboxRef}
+        checked={isChecked}
+      />
     </article>
   );
 }
