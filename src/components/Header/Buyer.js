@@ -23,14 +23,21 @@ export default function Buyer(props) {
       <p>Buyer min size: {props.minSize}</p>
       <p>Buyer description: {props.description}</p>
       <p>Takeover date: {props.takeoverDate}</p>
-      <p value={props.estateTypes.id}>
-        Takeover date: {props.estateTypes.name}
-      </p>
+      <p>{props.estateType}</p>
+      <EstPara />
 
       <p>
         Household: {props.adults}/{props.children}
       </p>
       <button onClick={addToList}>Add buyer</button>
     </article>
+  );
+}
+
+function EstPara(props) {
+  return (
+    <p key={estateTypes.id} value={estateTypes[props.estateType - 1]}>
+      {estateTypes.name}
+    </p>
   );
 }
