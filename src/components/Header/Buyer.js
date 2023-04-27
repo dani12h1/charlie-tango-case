@@ -16,6 +16,11 @@ export default function Buyer(props) {
     });
   }
 
+  function getEstateType(id) {
+    const estateType = estateTypes.find((type) => type.id === id);
+    return estateType ? estateType.name : "Unknown";
+  }
+
   return (
     <article key={props.id}>
       <p>Buyer ID: #{props.id}</p>
@@ -23,21 +28,11 @@ export default function Buyer(props) {
       <p>Buyer min size: {props.minSize}</p>
       <p>Buyer description: {props.description}</p>
       <p>Takeover date: {props.takeoverDate}</p>
-      <p>{props.estateType}</p>
-      <EstPara />
-
+      <p>Estate Type: {getEstateType(props.estateType)}</p>
       <p>
         Household: {props.adults}/{props.children}
       </p>
       <button onClick={addToList}>Add buyer</button>
     </article>
-  );
-}
-
-function EstPara(props) {
-  return (
-    <p key={estateTypes.id} value={estateTypes[props.estateType - 1]}>
-      {estateTypes.name}
-    </p>
   );
 }
