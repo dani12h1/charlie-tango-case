@@ -1,23 +1,14 @@
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import styles from "./Buyers.module.css";
-import Buyer from "@/components/Header/Buyer";
 import { useEffect } from "react";
-import { DistpatchContext } from "@/contexts/buyerContext";
+import { BuyerContext } from "@/contexts/buyerContext";
 import { useContext } from "react";
 import BuyersList from "@/components/Header/BuyersList";
 
 export default function Buyers({ data }) {
-  const dispatch = useContext(DistpatchContext);
+  const state = useContext(BuyerContext);
   const { query } = useRouter();
-  useEffect(() => {
-    //dispatch
-    dispatch({
-      action: "SET_ESTATE_INFO",
-      payload: query,
-    });
-  });
 
   return (
     <>
@@ -25,21 +16,7 @@ export default function Buyers({ data }) {
         <title>Find buyer | EDC</title>
       </Head>
       <div className="wrapper">
-        <h1 className={styles.headline}>Potential buyers</h1>
-
-        <div className={styles.content}>
-          <h2>Query params:</h2>
-          <pre>
-            <code>{JSON.stringify(query, null, 2)}</code>
-          </pre>
-
-          <section className="buyerContainer">
-            {data.map((buyer) => (
-              <Buyer key={data.id} {...buyer} />
-            ))}
-          </section>
-          <Link href="/contact">Proceed</Link>
-        </div>
+        <pre>{JSON.stringify(state, null, 2)}</pre>
       </div>
     </>
   );
