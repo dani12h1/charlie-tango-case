@@ -4,13 +4,13 @@ import { useRouter } from "next/router";
 import styles from "./Buyers.module.css";
 import Buyer from "@/components/Header/Buyer";
 import { useEffect } from "react";
-import { DistpatchContext } from "@/contexts/buyerContext";
+import { BuyerContext, DistpatchContext } from "@/contexts/buyerContext";
 import { useContext } from "react";
-import BuyersList from "@/components/Header/BuyersList";
 
 export default function Buyers({ data }) {
   const dispatch = useContext(DistpatchContext);
   const { query } = useRouter();
+  const { buyersList } = useContext(BuyerContext);
   useEffect(() => {
     //dispatch
     dispatch({
@@ -38,7 +38,9 @@ export default function Buyers({ data }) {
               <Buyer key={data.id} {...buyer} />
             ))}
           </section>
-          <Link href="/contact">Proceed</Link>
+          <Link href="/contact">
+            <button>Proceed ({buyersList.length})</button>
+          </Link>
         </div>
       </div>
     </>
