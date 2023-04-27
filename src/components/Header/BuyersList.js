@@ -9,7 +9,7 @@ function BuyersList() {
     <div className="buyersList">
       <h2>Buyers List</h2>
       {state.buyersList.map((buyer) => {
-        return <li key={buyer.id}>{buyer.maxPrice}</li>;
+        return <li key={buyer.id}>Ref nr. {buyer.id}</li>;
       })}
     </div>
   );

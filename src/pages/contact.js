@@ -17,6 +17,7 @@ export default function Buyers({ data }) {
       </Head>
       <div className="wrapper">
         <pre>{JSON.stringify(state, null, 2)}</pre>
+        <BuyersList />
       </div>
     </>
   );
