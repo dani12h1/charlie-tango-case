@@ -43,7 +43,7 @@ export default function Buyers({ data }) {
 }
 
 export async function getServerSideProps(context) {
-  const api = `http://localhost:3004/api/find-buyers?price=${context.query.price}&propertySize=${context.query.minSize}&zipCode=${context.query.zipCode}&propertyType=${context.query.propertyType}`;
+  const api = `http://localhost:3000/api/find-buyers?price=${context.query.price}&propertySize=${context.query.minSize}&zipCode=${context.query.zipCode}&propertyType=${context.query.propertyType}`;
   const res = await fetch(api);
   const data = await res.json();
 

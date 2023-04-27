@@ -2,6 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { BuyerContext } from "@/contexts/buyerContext";
 
+// Maps through the buyersList array and creates an <li> with the information
 function BuyersList() {
   const state = useContext(BuyerContext);
   return (

@@ -5,6 +5,7 @@ import { estateTypes } from "@/data/estateTypes";
 export default function Buyer(props) {
   const dispatch = useContext(DistpatchContext);
 
+  // The action object that is added to buyerList
   function addToList() {
     dispatch({
       action: "TOGGLE_BUYER",
@@ -16,11 +17,13 @@ export default function Buyer(props) {
     });
   }
 
+  // Checks the estate type
   function getEstateType(id) {
     const estateType = estateTypes.find((type) => type.id === id);
     return estateType ? estateType.name : "Unknown";
   }
 
+  // Card for the buyer
   return (
     <article key={props.id}>
       <p>Buyer ID: #{props.id}</p>
