@@ -21,6 +21,7 @@ function reducer(state, action) {
         (buyer) => buyer.id === action.payload.id
       );
       if (exists) {
+        console.log(state.buyersList.length);
         return {
           ...state,
           buyersList: state.buyersList.filter(
@@ -28,6 +29,7 @@ function reducer(state, action) {
           ),
         };
       } else {
+        console.log(state.buyersList.length);
         return {
           ...state,
           buyersList: state.buyersList.concat(action.payload),
