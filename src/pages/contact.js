@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useRouter } from "next/router";
+import { useRef } from "next/router";
 import { BuyerContext, DistpatchContext } from "@/contexts/buyerContext";
 import { useContext } from "react";
 import styles from "./Home.module.css";
@@ -8,7 +8,6 @@ import BuyersList from "@/components/Header/BuyersList";
 export default function Buyers() {
   const state = useContext(BuyerContext);
   const query = useContext(BuyerContext);
-
   return (
     <>
       <Head>
@@ -27,10 +26,29 @@ export default function Buyers() {
 }
 
 export function ContactForm(query) {
+  function submitted(e) {
+    e.preventDefault();
+    console.log("PREVENTED");
+  }
   const dispatch = useContext(DistpatchContext);
   function handleSubmit(e) {
     e.preventDefault();
-    console.log({ form: e.target, query });
+    const payload = {
+      name: "John Doe",
+      email: "john@doe.dk",
+      phone: "22222222",
+      id: 123,
+    };
+    fetch("/api/addData", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+
     dispatch({
       action: "MERGE_CONTACT_INFO",
       payload: {
@@ -41,6 +59,7 @@ export function ContactForm(query) {
       },
     });
   }
+
   return (
     <form
       /* action="/buyers" */
@@ -61,7 +80,7 @@ export function ContactForm(query) {
         <input name="phone" required type="tel" maxLength={8} />
       </label>
       <input name="checkbox" type="checkbox"></input>
-      <button className={styles.button} type="submit">
+      <button onSubmit={submitted} className={styles.button}>
         Submit
       </button>
     </form>
