@@ -7,8 +7,7 @@ import BuyersList from "@/components/Header/BuyersList";
 
 export default function Buyers() {
   const state = useContext(BuyerContext);
-
-  const { query } = useRouter();
+  const query = useContext(BuyerContext);
 
   return (
     <>
@@ -16,7 +15,7 @@ export default function Buyers() {
         <title>Find buyer | EDC</title>
       </Head>
       <div className="wrapper">
-        <pre>{JSON.stringify(state, null, 2)}</pre>
+        <pre>{JSON.stringify({ ...state, ...query }, null, 2)}</pre>
         <div className="refList">
           <BuyersList />
           <ContactForm {...query} {...state} />

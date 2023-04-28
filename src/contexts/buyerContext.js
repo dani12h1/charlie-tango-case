@@ -52,6 +52,7 @@ export function reducer(state, action) {
     case "MERGE_CONTACT_INFO":
       return {
         ...state,
+
         name: action.payload.name,
         email: action.payload.email,
         phone: action.payload.phone,
