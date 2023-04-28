@@ -61,6 +61,10 @@ body {
   padding: 1rem;
 }
 
-.buyerCard:has(input[type="checkbox"]:checked) {
+.buyerCard:has(input[type="radio"]:checked) {
   background-color: aqua;
+}
+
+.buyerCard {
+  cursor: pointer;
 }
