@@ -1,10 +1,10 @@
 import { DistpatchContext } from "@/contexts/buyerContext";
-import { useContext, useRef } from "react";
+import { useContext, useState } from "react";
 import { estateTypes } from "@/data/estateTypes";
 
 export default function Buyer(props) {
   const dispatch = useContext(DistpatchContext);
-  const checkboxRef = useRef(null);
+  const [isChecked, setIsChecked] = useState(false);
 
   // The action object that is added to buyerList
   function addToList(e) {
@@ -19,9 +19,7 @@ export default function Buyer(props) {
         estateType: props.estateType,
       },
     });
-    if (checkboxRef.current) {
-      checkboxRef.current.checked = !checkboxRef.current.checked;
-    }
+    setIsChecked(!isChecked);
   }
 
   // Checks the estate type
@@ -32,7 +30,11 @@ export default function Buyer(props) {
 
   // Card for the buyer
   return (
-    <article onClick={addToList} className="buyerCard" key={props.id}>
+    <article
+      onClick={addToList}
+      className={`buyerCard ${isChecked ? "checked" : ""}`}
+      key={props.id}
+    >
       <p>Buyer ID: #{props.id}</p>
       <p>Max price: {props.maxPrice}</p>
       <p>Buyer min size: {props.minSize}</p>
@@ -43,7 +45,16 @@ export default function Buyer(props) {
       <p>
         Household: {props.adults} / {props.children}
       </p>
-      <input type="checkbox" onInput={addToList} ref={checkboxRef} />
+
+      {isChecked ? (
+        <input
+          type="radio"
+          checked={isChecked}
+          onChange={() => setIsChecked(isChecked)}
+        />
+      ) : (
+        <input type="radio" checked={""} />
+      )}
     </article>
   );
 }
