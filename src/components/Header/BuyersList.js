@@ -1,8 +1,7 @@
 import React from "react";
 import { useContext } from "react";
-import { BuyerContext, DistpatchContext } from "@/contexts/buyerContext";
+import { BuyerContext } from "@/contexts/buyerContext";
 import BuyerItem from "./BuyerItem";
-import { reducer } from "@/contexts/buyerContext";
 
 // Maps through the buyersList array and creates an <li> with the information
 function BuyersList() {

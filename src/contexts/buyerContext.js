@@ -1,4 +1,3 @@
-import buyerList from "@/data/buyerList";
 import { createContext, useReducer } from "react";
 
 export const BuyerContext = createContext();
@@ -12,7 +11,7 @@ const initialState = {
 };
 
 export function reducer(state, action) {
-  console.log(state);
+  console.log({ state, action });
 
   switch (action.action) {
     case "SET_ESTATE_INFO":
@@ -43,6 +42,11 @@ export function reducer(state, action) {
         buyersList: state.buyersList.filter(
           (obj) => action.payload.id !== obj.id
         ),
+      };
+    case "MERGE_CONTACT_INFO":
+      return {
+        ...state,
+        name: action.payload.name,
       };
   }
   return { ...state };

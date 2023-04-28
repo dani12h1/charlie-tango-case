@@ -1,13 +1,11 @@
 import Head from "next/head";
-import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
-import { BuyerContext } from "@/contexts/buyerContext";
+import { BuyerContext, DistpatchContext } from "@/contexts/buyerContext";
 import { useContext } from "react";
 import styles from "./Home.module.css";
 import BuyersList from "@/components/Header/BuyersList";
 
-export default function Buyers({ data }) {
+export default function Buyers() {
   const state = useContext(BuyerContext);
   const { query } = useRouter();
 
@@ -20,7 +18,7 @@ export default function Buyers({ data }) {
         <pre>{JSON.stringify(state, null, 2)}</pre>
         <div className="refList">
           <BuyersList />
-          <ContactForm />
+          <ContactForm {...query} />
         </div>
         <div className="contactForm"></div>
       </div>
@@ -28,13 +26,22 @@ export default function Buyers({ data }) {
   );
 }
 
-export function ContactForm() {
+export function ContactForm(query) {
+  const dispatch = useContext(DistpatchContext);
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log({ form: e.target, query });
+    dispatch({
+      action: "MERGE_CONTACT_INFO",
+      payload: { name: e.target.elements.name.value },
+    });
+  }
   return (
     <form
-      action="/buyers"
+      /* action="/buyers" */
       method="GET"
       className={styles.form}
-      /*    onSubmit={handleSubmit} */
+      onSubmit={handleSubmit}
     >
       <label>
         <span className={styles.label}>Name</span>
