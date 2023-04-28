@@ -7,7 +7,9 @@ export default function Buyer(props) {
   const checkboxRef = useRef(null);
 
   // The action object that is added to buyerList
-  function addToList() {
+  function addToList(e) {
+    console.log(e.target);
+    console.log("ATL");
     dispatch({
       action: "TOGGLE_BUYER",
       payload: {
@@ -41,7 +43,7 @@ export default function Buyer(props) {
       <p>
         Household: {props.adults} / {props.children}
       </p>
-      <input type="checkbox" onClick={addToList} ref={checkboxRef} />
+      <input type="checkbox" onInput={addToList} ref={checkboxRef} />
     </article>
   );
 }

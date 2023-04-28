@@ -20,7 +20,7 @@ export function reducer(state, action) {
 
   switch (action.action) {
     case "SET_ESTATE_INFO":
-      return state;
+      return { ...state, ...action.payload };
 
     case "TOGGLE_BUYER":
       const exists = state.buyersList.find(

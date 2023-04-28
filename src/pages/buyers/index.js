@@ -16,9 +16,9 @@ export default function Buyers({ data }) {
     //dispatch
     dispatch({
       action: "SET_ESTATE_INFO",
-      payload: { ...state, ...query },
+      payload: { ...query },
     });
-  });
+  }, [dispatch, query]);
 
   return (
     <>
