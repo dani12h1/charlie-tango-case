@@ -8,6 +8,11 @@ const initialState = {
   email: "",
   phone: "",
   price: "",
+  price: "",
+  minSize: "",
+  zipCode: "",
+  propertyType: "",
+  checkbox: false,
 };
 
 export function reducer(state, action) {
@@ -16,6 +21,7 @@ export function reducer(state, action) {
   switch (action.action) {
     case "SET_ESTATE_INFO":
       return state;
+
     case "TOGGLE_BUYER":
       const exists = state.buyersList.find(
         (buyer) => buyer.id === action.payload.id
@@ -47,6 +53,9 @@ export function reducer(state, action) {
       return {
         ...state,
         name: action.payload.name,
+        email: action.payload.email,
+        phone: action.payload.phone,
+        checkbox: action.payload.checkbox,
       };
   }
   return { ...state };

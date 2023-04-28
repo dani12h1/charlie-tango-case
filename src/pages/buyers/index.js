@@ -11,11 +11,12 @@ export default function Buyers({ data }) {
   const dispatch = useContext(DistpatchContext);
   const { query } = useRouter();
   const { buyersList } = useContext(BuyerContext);
+  const state = useContext(BuyerContext);
   useEffect(() => {
     //dispatch
     dispatch({
       action: "SET_ESTATE_INFO",
-      payload: query,
+      payload: state,
     });
   });
 
@@ -30,7 +31,7 @@ export default function Buyers({ data }) {
         <div className={styles.content}>
           <h2>Query params:</h2>
           <pre>
-            <code>{JSON.stringify(query, null, 2)}</code>
+            <code>{JSON.stringify(state, null, 2)}</code>
           </pre>
 
           <section className="buyerContainer">

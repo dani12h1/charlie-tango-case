@@ -7,6 +7,7 @@ import BuyersList from "@/components/Header/BuyersList";
 
 export default function Buyers() {
   const state = useContext(BuyerContext);
+
   const { query } = useRouter();
 
   return (
@@ -18,7 +19,7 @@ export default function Buyers() {
         <pre>{JSON.stringify(state, null, 2)}</pre>
         <div className="refList">
           <BuyersList />
-          <ContactForm {...query} />
+          <ContactForm {...query} {...state} />
         </div>
         <div className="contactForm"></div>
       </div>
@@ -33,7 +34,12 @@ export function ContactForm(query) {
     console.log({ form: e.target, query });
     dispatch({
       action: "MERGE_CONTACT_INFO",
-      payload: { name: e.target.elements.name.value },
+      payload: {
+        name: e.target.elements.name.value,
+        email: e.target.elements.email.value,
+        phone: e.target.elements.phone.value,
+        checkbox: e.target.elements.checkbox.checked,
+      },
     });
   }
   return (
@@ -55,6 +61,7 @@ export function ContactForm(query) {
         <span className={styles.label}>Phone number</span>
         <input name="phone" required type="tel" maxLength={8} />
       </label>
+      <input name="checkbox" type="checkbox"></input>
       <button className={styles.button} type="submit">
         Submit
       </button>
