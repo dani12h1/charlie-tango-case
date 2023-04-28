@@ -31,7 +31,7 @@ export default function Buyers({ data }) {
         <div className={styles.content}>
           <h2>Query params:</h2>
           <pre>
-            <code>{JSON.stringify(state, null, 2)}</code>
+            <code>{JSON.stringify({ ...state, ...query }, null, 2)}</code>
           </pre>
 
           <section className="buyerContainer">
