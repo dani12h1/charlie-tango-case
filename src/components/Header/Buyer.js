@@ -14,6 +14,7 @@ export default function Buyer(props) {
         id: props.id,
         price: props.maxPrice,
         size: props.minSize,
+        estateType: props.estateType,
       },
     });
     if (checkboxRef.current) {
@@ -35,6 +36,7 @@ export default function Buyer(props) {
       <p>Buyer min size: {props.minSize}</p>
       <p>Buyer description: {props.description}</p>
       <p>Takeover date: {props.takeoverDate}</p>
+
       <p>Estate Type: {getEstateType(props.estateType)}</p>
       <p>
         Household: {props.adults} / {props.children}
