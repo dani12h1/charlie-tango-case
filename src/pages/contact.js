@@ -31,13 +31,27 @@ export function ContactForm(query) {
     console.log("PREVENTED");
   }
   const dispatch = useContext(DistpatchContext);
+
   function handleSubmit(e) {
     e.preventDefault();
+    dispatch({
+      action: "MERGE_CONTACT_INFO",
+      payload: {
+        name: e.target.elements.name.value,
+        email: e.target.elements.email.value,
+        phone: e.target.elements.phone.value,
+        checkbox: e.target.elements.checkbox.checked,
+      },
+    });
     const payload = {
-      name: "John Doe",
-      email: "john@doe.dk",
-      phone: "22222222",
-      id: 123,
+      name: query.name,
+      email: query.email,
+      phone: query.phone,
+      price: query.price,
+      size: query.size,
+      zip: query.zipCode,
+      consent: query.checkbox,
+      buyersList: query.buyersList,
     };
     fetch("/api/addData", {
       method: "POST",
@@ -48,16 +62,6 @@ export function ContactForm(query) {
     })
       .then((res) => res.json())
       .then((data) => console.log(data));
-
-    dispatch({
-      action: "MERGE_CONTACT_INFO",
-      payload: {
-        name: e.target.elements.name.value,
-        email: e.target.elements.email.value,
-        phone: e.target.elements.phone.value,
-        checkbox: e.target.elements.checkbox.checked,
-      },
-    });
   }
 
   return (
