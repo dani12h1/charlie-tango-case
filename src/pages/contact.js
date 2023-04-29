@@ -47,7 +47,7 @@ export function ContactForm(query) {
       action: "MERGE_CONTACT_INFO",
       payload: formData,
     });
-    // Spreads out the ...query and the ...formData and puts the data in the right columns in Supabase. Column naming is not perfect in Supabase using this method.
+    // Spreads out the ...query and the ...formData and merges them together without manually copying each field. buyersList is a json object.
     const payload = {
       ...query,
       ...formData,
