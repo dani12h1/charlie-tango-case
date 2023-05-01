@@ -24,7 +24,7 @@ export default function Dashboard({ data }) {
   return (
     <>
       <div className="wrapper">
-        <h1 className={styles.headline}>Potential buyers</h1>
+        <h1 className={styles.headline}>Dashboard</h1>
         <section className="buyerContainer">
           <DashboardList dashboardBuyers={dashboardBuyers} />
         </section>
@@ -58,6 +58,7 @@ function BuyerSeller(props) {
       <p>Email: {props.buyerSeller.email}</p>
       <p>Phone: {props.buyerSeller.phone}</p>
       <p>Created at: {formattedDate}</p>
+      <button>Contacted</button>
     </section>
   );
 }
