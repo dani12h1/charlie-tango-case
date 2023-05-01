@@ -1,6 +1,22 @@
 import Head from "next/head";
 import styles from "./Home.module.css";
-import EstOption from "@/components/EstateOpt";
+import { estateTypes } from "@/data/estateTypes";
+import React from "react";
+import {
+  Button,
+  Cascader,
+  Checkbox,
+  DatePicker,
+  Form,
+  Input,
+  InputNumber,
+  Radio,
+  Select,
+} from "antd";
+
+const onChange = (value) => {
+  console.log("changed", value);
+};
 
 export default function Home() {
   return (
@@ -41,30 +57,43 @@ export default function Home() {
 
 export function SellerEstateForm() {
   return (
-    <form
-      action="/buyers"
-      method="GET"
-      className={styles.form}
-      /*    onSubmit={handleSubmit} */
-    >
+    <form action="/buyers" method="GET" className={styles.form}>
       <label>
         <span className={styles.label}>Price</span>
-        <input name="price" required type="number" />
+        <InputNumber
+          name="price"
+          className={styles.price}
+          defaultValue={1000}
+          formatter={(value) =>
+            `DKK ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+          }
+          parser={(value) =>
+            value.replace(/DKK\s?|(\.*)/g, "").replace(".", ",")
+          }
+          onChange={onChange}
+        />
       </label>
       <label>
         <span className={styles.label}>Size in square metres</span>
-        <input name="minSize" required></input>
+        <Input name="minSize" required />
       </label>
       <label>
         <span className={styles.label}>Zip Code</span>
-        <input name="zipCode" required />
+        <Input name="zipCode" required />
       </label>
       <label>
         <span className={styles.label}>Property type</span>
-        <select name="propertyType">
-          <option value="">Please choose...</option>
-          <EstOption />
-        </select>
+        <Select
+          className={styles.select}
+          name="propertyType"
+          placeholder="Please choose..."
+        >
+          {estateTypes.map((estate) => (
+            <Select.Option key={estate.id} value={estate.id}>
+              {estate.name}
+            </Select.Option>
+          ))}
+        </Select>
       </label>
       <button className={styles.button} type="submit">
         Submit

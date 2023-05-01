@@ -23,7 +23,6 @@
 .form {
   display: flex;
   flex-direction: column;
-
   background-color: var(--dusty-blue-lighter);
   padding: 1rem;
 }
@@ -37,11 +36,12 @@
 .form input,
 .form select {
   padding: 0.5rem;
+  border-radius: 25px;
 }
 
-.form select {
-  width: 200px;
-  background: var(--white);
+.select,
+.price {
+  width: 100%;
 }
 
 .button {
@@ -50,6 +50,7 @@
   padding: 0.5rem;
   background: var(--blue);
   color: var(--white);
+  border-radius: 25px;
 }
 .button:hover {
   background: var(--hover);

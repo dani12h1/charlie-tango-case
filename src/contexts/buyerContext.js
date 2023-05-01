@@ -8,7 +8,6 @@ const initialState = {
   email: "",
   phone: "",
   price: "",
-  price: "",
   minSize: "",
   zipCode: "",
   propertyType: "",

@@ -11,7 +11,7 @@ export default function Buyers({ data }) {
   const dispatch = useContext(DistpatchContext);
   const { query } = useRouter();
   const { buyersList } = useContext(BuyerContext);
-  const state = useContext(BuyerContext);
+
   useEffect(() => {
     //dispatch
     dispatch({

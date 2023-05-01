@@ -63,10 +63,11 @@ body {
   border-radius: 15px;
 }
 
-.buyerCard:has(input[type="radio"]:checked) {
-  border: 2px solid var(--blue);
+.buyerCard.checked {
+  border: 3px solid var(--blue);
 }
 
 .buyerCard {
   cursor: pointer;
+  border: 2px solid transparent;
 }
