@@ -35,8 +35,8 @@ export default function Dashboard({ data }) {
 
 function DashboardList(props) {
   return (
-    <ul>
-      <h2>List of products</h2>
+    <ul className="buyerContainer">
+      <h2>Open cases</h2>
       {/* Receives the props.artcles from the App component */}
       {props.dashboardBuyers.map((buyerSeller) => (
         // Sends down the props.buyProduct received from the App
