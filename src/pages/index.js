@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "./Home.module.css";
-import EstOption from "@/components/Header/EstateOpt";
+import EstOption from "@/components/EstateOpt";
 
 export default function Home() {
   return (

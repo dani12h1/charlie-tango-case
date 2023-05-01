@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { BuyerContext, DistpatchContext } from "@/contexts/buyerContext";
 import { useContext } from "react";
 import styles from "./Home.module.css";
-import BuyersList from "@/components/Header/BuyersList";
+import BuyersList from "@/components/BuyersList";
 
 export default function Buyers() {
   const state = useContext(BuyerContext);

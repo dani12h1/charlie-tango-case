@@ -1,6 +1,7 @@
 import { DistpatchContext } from "@/contexts/buyerContext";
 import { useContext, useState } from "react";
 import { estateTypes } from "@/data/estateTypes";
+import styles from "../pages/buyers/Buyers.module.css";
 
 export default function Buyer(props) {
   const dispatch = useContext(DistpatchContext);
@@ -35,6 +36,16 @@ export default function Buyer(props) {
       className={`buyerCard ${isChecked ? "checked" : ""}`}
       key={props.id}
     >
+      {isChecked ? (
+        <input
+          type="radio"
+          className={styles.radioBtn}
+          checked={isChecked}
+          onChange={() => setIsChecked(isChecked)}
+        />
+      ) : (
+        <input className={styles.radioBtn} type="radio" checked={""} />
+      )}
       <p>Buyer ID: #{props.id}</p>
       <p>Max price: {props.maxPrice}</p>
       <p>Buyer min size: {props.minSize}</p>
@@ -45,16 +56,6 @@ export default function Buyer(props) {
       <p>
         Household: {props.adults} / {props.children}
       </p>
-
-      {isChecked ? (
-        <input
-          type="radio"
-          checked={isChecked}
-          onChange={() => setIsChecked(isChecked)}
-        />
-      ) : (
-        <input type="radio" checked={""} />
-      )}
     </article>
   );
 }
