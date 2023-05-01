@@ -4,7 +4,6 @@ import styles from "./Home.module.css";
 export default function Dashboard() {
   const [dashboardBuyers, setDashboardBuyers] = useState([]);
   const [activeList, setActiveList] = useState("dashboard");
-
   const [contacted, setContacted] = useState([]);
 
   useEffect(() => {
@@ -71,20 +70,21 @@ export default function Dashboard() {
 // List of buyers / sellers not contacted
 function DashboardList(props) {
   return (
-    <ul className="buyerContainer">
-      <h2>Open cases</h2>
-
-      {/* Receives the props.artcles from the App component */}
-      {props.dashboardBuyers.map((buyerSeller) => (
-        // Sends down the props.buyProduct received from the App
-        <BuyerSeller
-          sellerContacted={props.sellerContacted}
-          contacted={props.dashboardBuyers}
-          key={buyerSeller.id}
-          buyerSeller={{ ...buyerSeller }}
-        />
-      ))}
-    </ul>
+    <>
+      <h2>Open tickets</h2>
+      <ul className="buyerContainer">
+        {/* Receives the props.artcles from the App component */}
+        {props.dashboardBuyers.map((buyerSeller) => (
+          // Sends down the props.buyProduct received from the App
+          <BuyerSeller
+            sellerContacted={props.sellerContacted}
+            contacted={props.dashboardBuyers}
+            key={buyerSeller.id}
+            buyerSeller={{ ...buyerSeller }}
+          />
+        ))}
+      </ul>
+    </>
   );
 }
 
@@ -111,20 +111,21 @@ function BuyerSeller(props) {
 // List of the contacted buyers and sellers
 function ContactedList(props) {
   return (
-    <ul className="ContactedList">
-      <h2>Contacted</h2>
-
-      {/* Receives the props.artcles from the App component */}
-      {props.contacted.map((contactedBuyer) => (
-        // Sends down the props.buyProduct received from the App
-        <BuyerSellerContacted
-          sellerContacted={props.sellerContacted}
-          contacted={props.dashboardBuyers}
-          key={contactedBuyer.id}
-          contactedBuyer={{ ...contactedBuyer }}
-        />
-      ))}
-    </ul>
+    <>
+      <h2>Closed tickets</h2>
+      <ul className="ContactedList">
+        {/* Receives the props.artcles from the App component */}
+        {props.contacted.map((contactedBuyer) => (
+          // Sends down the props.buyProduct received from the App
+          <BuyerSellerContacted
+            sellerContacted={props.sellerContacted}
+            contacted={props.dashboardBuyers}
+            key={contactedBuyer.id}
+            contactedBuyer={{ ...contactedBuyer }}
+          />
+        ))}
+      </ul>
+    </>
   );
 }
 
