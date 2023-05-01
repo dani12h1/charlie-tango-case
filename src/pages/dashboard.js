@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import styles from "./Home.module.css";
-import Buyer from "@/components/Header/Buyer";
 
-export default function Dashboard({ data }) {
+export default function Dashboard() {
   const [dashboardBuyers, setDashboardBuyers] = useState([]);
   const [page, setPage] = useState(0);
+  const [contacted, setContacted] = useState([]);
 
   useEffect(() => {
     fetch("/api/getData", {
@@ -21,18 +21,32 @@ export default function Dashboard({ data }) {
 
   console.log(dashboardBuyers);
 
+  function sellerContacted(contactedBuyer) {
+    console.log(contactedBuyer);
+
+    setContacted((oldContactedList) => [
+      ...oldContactedList,
+      { ...contactedBuyer },
+    ]);
+  }
+
   return (
     <>
-      <div className="wrapper">
-        <h1 className={styles.headline}>Dashboard</h1>
-        <section className="buyerContainer">
-          <DashboardList dashboardBuyers={dashboardBuyers} />
-        </section>
+      <div className="dashboard_wrapper">
+        {/* <h1 className={styles.headline}>Dashboard</h1> */}
+
+        <DashboardList
+          sellerContacted={sellerContacted}
+          className="DashboardList"
+          dashboardBuyers={dashboardBuyers}
+        />
+        <ContactedList contacted={contacted} className="ContactedList" />
       </div>
     </>
   );
 }
 
+// List of buyers / sellers not contacted
 function DashboardList(props) {
   return (
     <ul className="buyerContainer">
@@ -40,12 +54,18 @@ function DashboardList(props) {
       {/* Receives the props.artcles from the App component */}
       {props.dashboardBuyers.map((buyerSeller) => (
         // Sends down the props.buyProduct received from the App
-        <BuyerSeller key={props.id} buyerSeller={{ ...buyerSeller }} />
+        <BuyerSeller
+          sellerContacted={props.sellerContacted}
+          contacted={props.dashboardBuyers}
+          key={props.id}
+          buyerSeller={{ ...buyerSeller }}
+        />
       ))}
     </ul>
   );
 }
 
+// A single item on the DashboardList
 function BuyerSeller(props) {
   const createdAt = new Date(props.buyerSeller.created_at);
   const formattedDate = `${createdAt.getDate()}-${
@@ -58,7 +78,39 @@ function BuyerSeller(props) {
       <p>Email: {props.buyerSeller.email}</p>
       <p>Phone: {props.buyerSeller.phone}</p>
       <p>Created at: {formattedDate}</p>
-      <button>Contacted</button>
+      <button onClick={() => props.sellerContacted(props.buyerSeller)}>
+        Contacted
+      </button>
+    </section>
+  );
+}
+
+// List of the contacted buyers and sellers
+function ContactedList(props) {
+  return (
+    <ul>
+      <h2>Contacted</h2>
+      {/* Receives the props.artcles from the App component */}
+      {props.contacted.map((contactedBuyer) => (
+        // Sends down the props.buyProduct received from the App
+        <BuyerSellerContacted
+          sellerContacted={props.sellerContacted}
+          contacted={props.dashboardBuyers}
+          key={props.id}
+          contactedBuyer={{ ...contactedBuyer }}
+        />
+      ))}
+    </ul>
+  );
+}
+
+// One single buyer and seller on the ContactedList
+function BuyerSellerContacted(props) {
+  return (
+    <section>
+      <p>Name: {props.contactedBuyer.name}</p>
+      <p>Email: {props.contactedBuyer.email}</p>
+      <p>Phone: {props.contactedBuyer.phone}</p>
     </section>
   );
 }

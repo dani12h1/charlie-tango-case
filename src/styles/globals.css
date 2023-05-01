@@ -48,6 +48,21 @@ body {
   padding: 0 1rem;
   margin: 0 auto;
 }
+.dashboard_wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 800px;
+  padding: 0 1rem;
+  margin: 0 auto;
+}
+
+.DashboardList {
+  grid-column: 1 / 2;
+}
+
+.ContactedList {
+  grid-column: 2 / 3;
+}
 
 .buyerContainer {
   display: grid;
