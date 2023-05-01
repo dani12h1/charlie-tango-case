@@ -3,6 +3,7 @@ import styles from "./Home.module.css";
 
 export default function Dashboard() {
   const [dashboardBuyers, setDashboardBuyers] = useState([]);
+  const [activeList, setActiveList] = useState("dashboard");
 
   const [contacted, setContacted] = useState([]);
 
@@ -31,26 +32,37 @@ export default function Dashboard() {
         (buyerSeller) => buyerSeller.id !== contactedBuyer.id
       )
     );
-    console.log("DashboardList length:", dashboardBuyers.length);
-    console.log("ContactedList length:", contacted.length);
+  }
+
+  function handleListButtonClick(listType) {
+    setActiveList(listType);
   }
 
   return (
     <>
       <div className="dashboard_wrapper">
-        {/* <h1 className={styles.headline}>Dashboard</h1> */}
+        <div className="dashboard_header">
+          <h1 className={styles.headline}>Dashboard</h1>
+        </div>
 
-        <DashboardList
-          length={dashboardBuyers.length}
-          sellerContacted={sellerContacted}
-          className="DashboardList"
-          dashboardBuyers={dashboardBuyers}
-        />
-        <ContactedList
-          length={contacted.length}
-          contacted={contacted}
-          className="ContactedList"
-        />
+        <div className="dashboard_buttons">
+          <button onClick={() => handleListButtonClick("dashboard")}>
+            Open {dashboardBuyers.length}
+          </button>
+          <button onClick={() => handleListButtonClick("contacted")}>
+            Closed {contacted.length}
+          </button>
+        </div>
+        {/* Shows the list depending on wether or not "dashboard" is clicked */}
+        {activeList === "dashboard" ? (
+          <DashboardList
+            sellerContacted={sellerContacted}
+            className="DashboardList"
+            dashboardBuyers={dashboardBuyers}
+          />
+        ) : (
+          <ContactedList contacted={contacted} className="ContactedList" />
+        )}
       </div>
     </>
   );
@@ -61,14 +73,14 @@ function DashboardList(props) {
   return (
     <ul className="buyerContainer">
       <h2>Open cases</h2>
-      <p>{props.dashboardBuyers.length}</p>
+
       {/* Receives the props.artcles from the App component */}
       {props.dashboardBuyers.map((buyerSeller) => (
         // Sends down the props.buyProduct received from the App
         <BuyerSeller
           sellerContacted={props.sellerContacted}
           contacted={props.dashboardBuyers}
-          key={props.id}
+          key={buyerSeller.id}
           buyerSeller={{ ...buyerSeller }}
         />
       ))}
@@ -99,16 +111,16 @@ function BuyerSeller(props) {
 // List of the contacted buyers and sellers
 function ContactedList(props) {
   return (
-    <ul>
+    <ul className="ContactedList">
       <h2>Contacted</h2>
-      <p>{props.contacted.length}</p>
+
       {/* Receives the props.artcles from the App component */}
       {props.contacted.map((contactedBuyer) => (
         // Sends down the props.buyProduct received from the App
         <BuyerSellerContacted
           sellerContacted={props.sellerContacted}
           contacted={props.dashboardBuyers}
-          key={props.id}
+          key={contactedBuyer.id}
           contactedBuyer={{ ...contactedBuyer }}
         />
       ))}
