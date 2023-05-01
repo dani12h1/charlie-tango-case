@@ -29,10 +29,10 @@ export default function Buyers({ data }) {
         <h1 className={styles.headline}>Potential buyers</h1>
 
         <div className={styles.content}>
-          <h2>Query params:</h2>
+          {/* <h2>Query params:</h2>
           <pre>
             <code>{JSON.stringify({ ...state, ...query }, null, 2)}</code>
-          </pre>
+          </pre> */}
 
           <section className="buyerContainer">
             {data.map((buyer) => (
