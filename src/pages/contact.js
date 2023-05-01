@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { useRef } from "next/router";
 import { BuyerContext, DistpatchContext } from "@/contexts/buyerContext";
 import { useContext } from "react";
 import styles from "./Home.module.css";

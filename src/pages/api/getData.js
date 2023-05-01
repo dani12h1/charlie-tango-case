@@ -4,13 +4,12 @@ export default async function handler(req, res) {
   const response = await fetch(
     "https://hgumkzlqjshouqhpskwd.supabase.co/rest/v1/Dashboard_data",
     {
-      method: "POST",
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
         apikey: process.env.SUPABASE_KEY,
         Prefer: "return=representation",
       },
-      body: JSON.stringify(req.body),
     }
   ).then((res) => res.json());
   console.log({ response });
