@@ -3,7 +3,7 @@ import styles from "./Home.module.css";
 
 export default function Dashboard() {
   const [dashboardBuyers, setDashboardBuyers] = useState([]);
-  const [page, setPage] = useState(0);
+
   const [contacted, setContacted] = useState([]);
 
   useEffect(() => {
@@ -17,9 +17,7 @@ export default function Dashboard() {
       .then((data) => {
         console.log(data), setDashboardBuyers(data.response);
       });
-  }, [page]);
-
-  console.log(dashboardBuyers);
+  }, []);
 
   function sellerContacted(contactedBuyer) {
     console.log(contactedBuyer);
@@ -28,6 +26,13 @@ export default function Dashboard() {
       ...oldContactedList,
       { ...contactedBuyer },
     ]);
+    setDashboardBuyers((oldDashboardBuyers) =>
+      oldDashboardBuyers.filter(
+        (buyerSeller) => buyerSeller.id !== contactedBuyer.id
+      )
+    );
+    console.log("DashboardList length:", dashboardBuyers.length);
+    console.log("ContactedList length:", contacted.length);
   }
 
   return (
@@ -36,11 +41,16 @@ export default function Dashboard() {
         {/* <h1 className={styles.headline}>Dashboard</h1> */}
 
         <DashboardList
+          length={dashboardBuyers.length}
           sellerContacted={sellerContacted}
           className="DashboardList"
           dashboardBuyers={dashboardBuyers}
         />
-        <ContactedList contacted={contacted} className="ContactedList" />
+        <ContactedList
+          length={contacted.length}
+          contacted={contacted}
+          className="ContactedList"
+        />
       </div>
     </>
   );
@@ -51,6 +61,7 @@ function DashboardList(props) {
   return (
     <ul className="buyerContainer">
       <h2>Open cases</h2>
+      <p>{props.dashboardBuyers.length}</p>
       {/* Receives the props.artcles from the App component */}
       {props.dashboardBuyers.map((buyerSeller) => (
         // Sends down the props.buyProduct received from the App
@@ -90,6 +101,7 @@ function ContactedList(props) {
   return (
     <ul>
       <h2>Contacted</h2>
+      <p>{props.contacted.length}</p>
       {/* Receives the props.artcles from the App component */}
       {props.contacted.map((contactedBuyer) => (
         // Sends down the props.buyProduct received from the App
