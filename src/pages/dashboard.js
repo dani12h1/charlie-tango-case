@@ -8,7 +8,6 @@ export default function Dashboard() {
   const dashboardBuyers = useContext(DashboardContext);
   const setDashboardBuyers = useContext(DashboardSetContext);
   const [activeList, setActiveList] = useState("dashboard");
-  // const [contacted, setContacted] = useState([]);
 
   useEffect(() => {
     fetch("/api/getData", {
@@ -23,29 +22,24 @@ export default function Dashboard() {
       });
   }, [setDashboardBuyers]);
 
-  function sellerContacted(contactedBuyer) {
-    console.log(contactedBuyer.contacted);
-
-    // setContacted((oldContactedList) => [
-    //   ...oldContactedList,
-    //   { ...contactedBuyer },
-    // ]);
-    setDashboardBuyers((oldDashboardBuyers) =>
-      oldDashboardBuyers.filter(
-        (buyerSeller) => buyerSeller.id !== contactedBuyer.id
-      )
-    );
-  }
-
   function handleListButtonClick(listType) {
     setActiveList(listType);
   }
 
   function handleContacted(buyerSeller) {
-    buyerSeller.contacted
-      ? (buyerSeller.contacted = false)
-      : (buyerSeller.contacted = true);
-    console.log(buyerSeller.contacted);
+    const updatedBuyers = dashboardBuyers.map((bs) => {
+      if (bs.id === buyerSeller.id) {
+        return {
+          ...bs,
+          contacted: !bs.contacted,
+        };
+      }
+      return bs;
+    });
+
+    setDashboardBuyers(updatedBuyers);
+
+    console.log(updatedBuyers);
   }
 
   return (
@@ -67,7 +61,6 @@ export default function Dashboard() {
         {activeList === "dashboard" ? (
           <DashboardList
             handleContacted={handleContacted}
-            sellerContacted={sellerContacted}
             className="DashboardList"
             dashboardBuyers={dashboardBuyers}
           />
