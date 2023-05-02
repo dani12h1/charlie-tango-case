@@ -102,9 +102,17 @@ body {
 .inputs {
   width: 100%;
   border-radius: 0px;
-  padding: 0.2rem;
 }
 
 .ant-select-single .ant-select-selector {
   border-radius: 0px;
+}
+
+.ant-select-selector {
+  width: 100%;
+}
+
+.checkBox {
+  display: flex;
+  align-items: flex-start;
 }

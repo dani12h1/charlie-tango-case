@@ -64,7 +64,7 @@ export function ContactForm(query) {
         <span className={styles.label}>Phone number</span>
         <input name="phone" required type="tel" maxLength={8} />
       </label>
-      <input name="checkbox" type="checkbox"></input>
+      <input className="checkBox" name="checkbox" type="checkbox"></input>
       <button className={styles.button} type="submit">
         Submit
       </button>
