@@ -8,6 +8,7 @@ export default function BuyerItem(buyer) {
       action: "REMOVE_CHOSEN_BUYER",
       payload: {
         id: buyer.id,
+        price: buyer.price,
       },
     });
   }

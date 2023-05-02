@@ -29,6 +29,17 @@
   grid-column: span 2;
 }
 
+.buttonContainer {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 90%;
+  display: flex;
+  grid-column: span 2;
+  align-content: center;
+  justify-content: center;
+}
+
 .buyerCardh3:first-of-type {
   grid-column: span 1;
 }
@@ -53,7 +64,8 @@
 }
 
 .button {
-  margin-top: 1rem;
+  width: 325px;
+  height: 50px;
   padding: 0.5rem;
   background: var(--blue);
   color: var(--white);

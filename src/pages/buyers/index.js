@@ -39,12 +39,12 @@ export default function Buyers({ data }) {
             {data.map((buyer) => (
               <Buyer key={data.id} {...buyer} />
             ))}
+            <Link className={styles.buttonContainer} href="/contact">
+              <button className={styles.button}>
+                Proceed ({buyersList.length})
+              </button>
+            </Link>
           </section>
-          <Link href="/contact">
-            <button className={styles.button}>
-              Proceed ({buyersList.length})
-            </button>
-          </Link>
         </div>
       </div>
     </>

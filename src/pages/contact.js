@@ -14,13 +14,17 @@ export default function Buyers() {
       <Head>
         <title>Find buyer | EDC</title>
       </Head>
+
       <div className="wrapper">
-        <pre>{JSON.stringify({ ...state, ...query }, null, 2)}</pre>
-        <div className="refList">
-          <BuyersList />
-          <ContactForm {...query} {...state} />
+        <h1 className={styles.headline}>Contact Info</h1>
+        <div className={styles.content}>
+          {/*         <pre>{JSON.stringify({ ...state, ...query }, null, 2)}</pre> */}
+          <div className="refList">
+            <ContactForm {...query} {...state} />
+            <BuyersList />
+          </div>
+          <div className="contactForm"></div>
         </div>
-        <div className="contactForm"></div>
       </div>
     </>
   );

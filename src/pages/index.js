@@ -71,7 +71,7 @@ export function SellerEstateForm() {
       <label>
         <span className={styles.label}>Price</span>
         <InputNumber
-          className={styles.price}
+          className="inputs"
           defaultValue={750000}
           formatter={(value) =>
             `DKK ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ".")
@@ -85,7 +85,7 @@ export function SellerEstateForm() {
       <label>
         <span className={styles.label}>Size in square metres</span>
         <InputNumber
-          className={styles.price}
+          className="inputs"
           defaultValue={120}
           formatter={(value) =>
             `m² ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ".")
@@ -98,12 +98,13 @@ export function SellerEstateForm() {
       </label>
       <label>
         <span className={styles.label}>Zip Code</span>
-        <Input name="zipCode" required />
+        <Input className="inputs" name="zipCode" required />
       </label>
       <label>
         <span className={styles.label}>Property type</span>
         <Select
-          className={styles.select}
+          className="inputs"
+          id="selectInput"
           name="propertyType"
           placeholder="Please choose..."
         >

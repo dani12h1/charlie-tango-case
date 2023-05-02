@@ -33,12 +33,6 @@
   display: block;
 }
 
-.form input,
-.form select {
-  padding: 0.5rem;
-  border-radius: 25px;
-}
-
 .select,
 .price {
   width: 100%;
@@ -54,4 +48,8 @@
 }
 .button:hover {
   background: var(--hover);
+}
+
+.contactForm {
+  background-color: hotpink;
 }

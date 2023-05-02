@@ -54,6 +54,7 @@ body {
   grid-template-columns: repeat(auto-fill, 325px);
   gap: 50px;
   justify-content: center;
+  margin-bottom: 100px;
 }
 
 .buyerContainer > article {
@@ -75,4 +76,35 @@ body {
   transition: 100ms;
   cursor: pointer;
   border: 3px solid transparent;
+}
+
+.refList {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+}
+
+.buyerRef {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.buyerRef > button {
+  background: none;
+}
+
+.buyerRef svg {
+  background-color: none;
+  color: var(--dark-blue);
+}
+
+.inputs {
+  width: 100%;
+  border-radius: 0px;
+  padding: 0.2rem;
+}
+
+.ant-select-single .ant-select-selector {
+  border-radius: 0px;
 }
