@@ -9,9 +9,11 @@ import { useEffect } from "react";
 export function Header() {
   const dashboardBuyers = useContext(DashboardContext);
 
-  useEffect(() => {
-    console.log(dashboardBuyers);
-  });
+  // Only to show the length of the array
+  // useEffect(() => {
+  //   console.log(dashboardBuyers.length);
+  // });
+
   return (
     <>
       <header className="wrapper">

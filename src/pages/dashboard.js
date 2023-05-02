@@ -21,7 +21,7 @@ export default function Dashboard() {
       .then((data) => {
         console.log(data), setDashboardBuyers(data.response);
       });
-  }, []);
+  }, [setDashboardBuyers]);
 
   function sellerContacted(contactedBuyer) {
     console.log(contactedBuyer);

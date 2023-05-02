@@ -11,6 +11,9 @@ export function BuyerSeller(props) {
       <p>Email: {props.buyerSeller.email}</p>
       <p>Phone: {props.buyerSeller.phone}</p>
       <p>Created at: {formattedDate}</p>
+      <p>Contacted: {`${props.buyerSeller.contacted}`}</p>
+      <p>Consent: {`${props.buyerSeller.checkbox}`}</p>
+      <p>Size: {props.buyerSeller.minSize} kvdm</p>
       <button onClick={() => props.sellerContacted(props.buyerSeller)}>
         Contacted
       </button>
