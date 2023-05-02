@@ -2,6 +2,8 @@ import Head from "next/head";
 import styles from "./Home.module.css";
 import { estateTypes } from "@/data/estateTypes";
 import React from "react";
+import { useState } from "react";
+
 import {
   Button,
   Cascader,
@@ -13,10 +15,6 @@ import {
   Radio,
   Select,
 } from "antd";
-
-const onChange = (value) => {
-  console.log("changed", value);
-};
 
 export default function Home() {
   return (
@@ -56,14 +54,25 @@ export default function Home() {
 }
 
 export function SellerEstateForm() {
+  const [rawPrice, setRawPrice] = useState(750000);
+  const [rawSize, setRawSize] = useState(120);
+  function onChangeSize(value) {
+    setRawSize(value);
+    // Pass the rawValue to the parent component
+  }
+  function onChange(value) {
+    setRawPrice(value);
+    // Pass the rawValue to the parent component
+  }
   return (
     <form action="/buyers" method="GET" className={styles.form}>
+      <input type="hidden" name="price" value={rawPrice}></input>
+      <input type="hidden" name="minSize" value={rawSize}></input>
       <label>
         <span className={styles.label}>Price</span>
         <InputNumber
-          name="price"
           className={styles.price}
-          defaultValue={1000}
+          defaultValue={750000}
           formatter={(value) =>
             `DKK ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ".")
           }
@@ -75,7 +84,17 @@ export function SellerEstateForm() {
       </label>
       <label>
         <span className={styles.label}>Size in square metres</span>
-        <Input name="minSize" required />
+        <InputNumber
+          className={styles.price}
+          defaultValue={120}
+          formatter={(value) =>
+            `m² ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+          }
+          parser={(value) =>
+            value.replace(/m²\s?|(\.*)/g, "").replace(".", ",")
+          }
+          onChange={onChangeSize}
+        />
       </label>
       <label>
         <span className={styles.label}>Zip Code</span>

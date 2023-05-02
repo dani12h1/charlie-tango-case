@@ -68,6 +68,11 @@ body {
 }
 
 .buyerCard {
+  display: grid;
+  grid-auto-rows: 25px;
+  gap: 2px;
+  align-items: center;
+  transition: 100ms;
   cursor: pointer;
-  border: 2px solid transparent;
+  border: 3px solid transparent;
 }
