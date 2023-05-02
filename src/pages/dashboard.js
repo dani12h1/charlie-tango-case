@@ -33,6 +33,17 @@ export default function Dashboard() {
     console.log(buyerSeller.contacted);
 
     patchContact({ contacted: buyerSeller.contacted, id: buyerSeller.id });
+    //
+    setDashboardBuyers((old) => {
+      return old.map((seller) => {
+        if (seller.id === buyerSeller.id) {
+          const copy = { ...seller };
+          copy.contacted = !copy.contacted;
+          return copy;
+        }
+        return seller;
+      });
+    });
   }
 
   function patchContact(payload) {
@@ -61,10 +72,14 @@ export default function Dashboard() {
 
         <div className="dashboard_buttons">
           <button onClick={() => handleListButtonClick("dashboard")}>
-            Open {dashboardBuyers.length}
+            Open{" "}
+            {
+              dashboardBuyers.filter((seller) => seller.contacted === false)
+                .length
+            }
           </button>
           <button onClick={() => handleListButtonClick("contacted")}>
-            {/* Closed {contacted.length} */}
+            Closed {dashboardBuyers.filter((seller) => seller.contacted).length}
           </button>
         </div>
         {/* Shows the list depending on wether or not "dashboard" is clicked */}
@@ -72,10 +87,15 @@ export default function Dashboard() {
           <DashboardList
             handleContacted={handleContacted}
             className="DashboardList"
-            dashboardBuyers={dashboardBuyers}
+            dashboardBuyers={dashboardBuyers.filter(
+              (buyer) => !buyer.contacted
+            )}
           />
         ) : (
-          <ContactedList className="ContactedList" />
+          <ContactedList
+            className="ContactedList"
+            dashboardBuyers={dashboardBuyers.filter((buyer) => buyer.contacted)}
+          />
         )}
       </div>
     </>
