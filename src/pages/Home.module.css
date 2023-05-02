@@ -27,6 +27,12 @@
   padding: 1rem;
 }
 
+.form > .checkBox {
+  align-self: self-start;
+  margin-inline: 0;
+  border-radius: 0;
+}
+
 .label {
   margin: 0.5rem 0;
   font-weight: 700;
@@ -45,6 +51,7 @@
   background: var(--blue);
   color: var(--white);
   border-radius: 25px;
+  transition: 100ms;
 }
 .button:hover {
   background: var(--hover);

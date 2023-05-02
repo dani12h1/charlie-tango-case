@@ -3,6 +3,8 @@ import { useContext, useState } from "react";
 import { estateTypes } from "@/data/estateTypes";
 import styles from "../pages/buyers/Buyers.module.css";
 import { priceFormatter } from "@/data/buyerProfiles";
+import React from "react";
+import { Radio } from "antd";
 
 export default function Buyer(props) {
   const dispatch = useContext(DistpatchContext);
@@ -38,14 +40,13 @@ export default function Buyer(props) {
       key={props.id}
     >
       {isChecked ? (
-        <input
-          type="radio"
+        <Radio
           className={styles.radioBtn}
           checked={isChecked}
           onChange={() => setIsChecked(isChecked)}
         />
       ) : (
-        <input className={styles.radioBtn} type="radio" checked={""} />
+        <Radio className={styles.radioBtn} type="radio" checked={""} />
       )}
       <h3 className={styles.buyerCardh3}>Max price:</h3>
       <p className={styles.buyerCardPara}>

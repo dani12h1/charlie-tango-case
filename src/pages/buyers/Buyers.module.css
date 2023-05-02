@@ -30,6 +30,7 @@
 }
 
 .buttonContainer {
+  text-decoration: none;
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
@@ -64,6 +65,7 @@
 }
 
 .button {
+  transition: 100ms;
   width: 325px;
   height: 50px;
   padding: 0.5rem;

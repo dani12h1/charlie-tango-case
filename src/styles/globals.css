@@ -54,7 +54,7 @@ body {
   grid-template-columns: repeat(auto-fill, 325px);
   gap: 50px;
   justify-content: center;
-  margin-bottom: 100px;
+  margin-bottom: 75px;
 }
 
 .buyerContainer > article {
@@ -112,7 +112,17 @@ body {
   width: 100%;
 }
 
-.checkBox {
-  display: flex;
-  align-items: flex-start;
+.ant-checkbox {
+  border-radius: 0px;
 }
+
+.ant-radio-wrapper .ant-radio-checked .ant-radio-inner {
+  transition: 100ms;
+  border-color: transparent;
+  background-color: var(--blue);
+}
+
+/* .checkBox {
+ 
+
+} */
