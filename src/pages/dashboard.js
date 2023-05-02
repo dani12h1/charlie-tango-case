@@ -8,7 +8,7 @@ export default function Dashboard() {
   const dashboardBuyers = useContext(DashboardContext);
   const setDashboardBuyers = useContext(DashboardSetContext);
   const [activeList, setActiveList] = useState("dashboard");
-  const [contacted, setContacted] = useState([]);
+  // const [contacted, setContacted] = useState([]);
 
   useEffect(() => {
     fetch("/api/getData", {
@@ -26,10 +26,10 @@ export default function Dashboard() {
   function sellerContacted(contactedBuyer) {
     console.log(contactedBuyer.contacted);
 
-    setContacted((oldContactedList) => [
-      ...oldContactedList,
-      { ...contactedBuyer },
-    ]);
+    // setContacted((oldContactedList) => [
+    //   ...oldContactedList,
+    //   { ...contactedBuyer },
+    // ]);
     setDashboardBuyers((oldDashboardBuyers) =>
       oldDashboardBuyers.filter(
         (buyerSeller) => buyerSeller.id !== contactedBuyer.id
@@ -39,6 +39,13 @@ export default function Dashboard() {
 
   function handleListButtonClick(listType) {
     setActiveList(listType);
+  }
+
+  function handleContacted(buyerSeller) {
+    buyerSeller.contacted
+      ? (buyerSeller.contacted = false)
+      : (buyerSeller.contacted = true);
+    console.log(buyerSeller.contacted);
   }
 
   return (
@@ -53,18 +60,19 @@ export default function Dashboard() {
             Open {dashboardBuyers.length}
           </button>
           <button onClick={() => handleListButtonClick("contacted")}>
-            Closed {contacted.length}
+            {/* Closed {contacted.length} */}
           </button>
         </div>
         {/* Shows the list depending on wether or not "dashboard" is clicked */}
         {activeList === "dashboard" ? (
           <DashboardList
+            handleContacted={handleContacted}
             sellerContacted={sellerContacted}
             className="DashboardList"
             dashboardBuyers={dashboardBuyers}
           />
         ) : (
-          <ContactedList contacted={contacted} className="ContactedList" />
+          <ContactedList className="ContactedList" />
         )}
       </div>
     </>

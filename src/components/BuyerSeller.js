@@ -14,7 +14,7 @@ export function BuyerSeller(props) {
       <p>Contacted: {`${props.buyerSeller.contacted}`}</p>
       <p>Consent: {`${props.buyerSeller.checkbox}`}</p>
       <p>Size: {props.buyerSeller.minSize} kvdm</p>
-      <button onClick={() => props.sellerContacted(props.buyerSeller)}>
+      <button onClick={() => props.handleContacted(props.buyerSeller)}>
         Contacted
       </button>
     </section>

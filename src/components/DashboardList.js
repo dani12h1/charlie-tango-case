@@ -10,6 +10,7 @@ export function DashboardList(props) {
         {props.dashboardBuyers.map((buyerSeller) => (
           // Sends down the props.buyProduct received from the App
           <BuyerSeller
+            handleContacted={props.handleContacted}
             sellerContacted={props.sellerContacted}
             contacted={props.dashboardBuyers}
             key={buyerSeller.id}

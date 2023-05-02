@@ -6,7 +6,7 @@ export function ContactedList(props) {
     <>
       <h2>Closed tickets</h2>
       <ul className="ContactedList">
-        {/* Receives the props.artcles from the App component */}
+        {/* Receives the props.artcles from the App component
         {props.contacted.map((contactedBuyer) => (
           // Sends down the props.buyProduct received from the App
           <BuyerSellerContacted
@@ -15,7 +15,7 @@ export function ContactedList(props) {
             key={contactedBuyer.id}
             contactedBuyer={{ ...contactedBuyer }}
           />
-        ))}
+        ))} */}
       </ul>
     </>
   );
