@@ -7,6 +7,7 @@ export function BuyerSeller(props) {
 
   return (
     <section>
+      <p>ID: {props.buyerSeller.id}</p>
       <p>Name: {props.buyerSeller.name}</p>
       <p>Email: {props.buyerSeller.email}</p>
       <p>Phone: {props.buyerSeller.phone}</p>
