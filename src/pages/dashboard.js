@@ -36,6 +36,7 @@ export default function Dashboard() {
   }
 
   function patchContact(payload) {
+    console.log(payload);
     const patchedContact = payload;
 
     console.log(`buyerSeller with id: ${payload.id}`);
