@@ -27,19 +27,28 @@ export default function Dashboard() {
   }
 
   function handleContacted(buyerSeller) {
-    const updatedBuyers = dashboardBuyers.map((bs) => {
-      if (bs.id === buyerSeller.id) {
-        return {
-          ...bs,
-          contacted: !bs.contacted,
-        };
-      }
-      return bs;
-    });
+    buyerSeller.contacted
+      ? (buyerSeller.contacted = false)
+      : (buyerSeller.contacted = true);
+    console.log(buyerSeller.contacted);
 
-    setDashboardBuyers(updatedBuyers);
+    patchContact({ contacted: buyerSeller.contacted, id: buyerSeller.id });
+  }
 
-    console.log(updatedBuyers);
+  function patchContact(payload) {
+    const patchedContact = payload;
+
+    console.log(`buyerSeller with id: ${payload.id}`);
+    fetch("/api/patch_contact", {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+
+      body: JSON.stringify(patchedContact),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
   }
 
   return (
