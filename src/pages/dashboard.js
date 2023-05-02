@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import styles from "./Home.module.css";
 import { ContactedList } from "../components/ContactedList";
 import { DashboardList } from "../components/DashboardList";
+import { DashboardContext, DashboardSetContext } from "./_app";
 
 export default function Dashboard() {
-  const [dashboardBuyers, setDashboardBuyers] = useState([]);
+  const dashboardBuyers = useContext(DashboardContext);
+  const setDashboardBuyers = useContext(DashboardSetContext);
   const [activeList, setActiveList] = useState("dashboard");
   const [contacted, setContacted] = useState([]);
 
