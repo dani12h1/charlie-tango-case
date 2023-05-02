@@ -24,7 +24,7 @@ export default function Dashboard() {
   }, [setDashboardBuyers]);
 
   function sellerContacted(contactedBuyer) {
-    console.log(contactedBuyer);
+    console.log(contactedBuyer.contacted);
 
     setContacted((oldContactedList) => [
       ...oldContactedList,
