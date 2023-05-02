@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./Home.module.css";
+import { ContactedList } from "../components/ContactedList";
+import { DashboardList } from "../components/DashboardList";
 
 export default function Dashboard() {
   const [dashboardBuyers, setDashboardBuyers] = useState([]);
@@ -64,78 +66,5 @@ export default function Dashboard() {
         )}
       </div>
     </>
-  );
-}
-
-// List of buyers / sellers not contacted
-function DashboardList(props) {
-  return (
-    <>
-      <h2>Open tickets</h2>
-      <ul className="buyerContainer">
-        {/* Receives the props.artcles from the App component */}
-        {props.dashboardBuyers.map((buyerSeller) => (
-          // Sends down the props.buyProduct received from the App
-          <BuyerSeller
-            sellerContacted={props.sellerContacted}
-            contacted={props.dashboardBuyers}
-            key={buyerSeller.id}
-            buyerSeller={{ ...buyerSeller }}
-          />
-        ))}
-      </ul>
-    </>
-  );
-}
-
-// A single item on the DashboardList
-function BuyerSeller(props) {
-  const createdAt = new Date(props.buyerSeller.created_at);
-  const formattedDate = `${createdAt.getDate()}-${
-    createdAt.getMonth() + 1
-  }-${createdAt.getFullYear()} ${createdAt.getHours()}:${createdAt.getMinutes()}`;
-
-  return (
-    <section>
-      <p>Name: {props.buyerSeller.name}</p>
-      <p>Email: {props.buyerSeller.email}</p>
-      <p>Phone: {props.buyerSeller.phone}</p>
-      <p>Created at: {formattedDate}</p>
-      <button onClick={() => props.sellerContacted(props.buyerSeller)}>
-        Contacted
-      </button>
-    </section>
-  );
-}
-
-// List of the contacted buyers and sellers
-function ContactedList(props) {
-  return (
-    <>
-      <h2>Closed tickets</h2>
-      <ul className="ContactedList">
-        {/* Receives the props.artcles from the App component */}
-        {props.contacted.map((contactedBuyer) => (
-          // Sends down the props.buyProduct received from the App
-          <BuyerSellerContacted
-            sellerContacted={props.sellerContacted}
-            contacted={props.dashboardBuyers}
-            key={contactedBuyer.id}
-            contactedBuyer={{ ...contactedBuyer }}
-          />
-        ))}
-      </ul>
-    </>
-  );
-}
-
-// One single buyer and seller on the ContactedList
-function BuyerSellerContacted(props) {
-  return (
-    <section>
-      <p>Name: {props.contactedBuyer.name}</p>
-      <p>Email: {props.contactedBuyer.email}</p>
-      <p>Phone: {props.contactedBuyer.phone}</p>
-    </section>
   );
 }
