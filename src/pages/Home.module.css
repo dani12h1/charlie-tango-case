@@ -23,9 +23,14 @@
 .form {
   display: flex;
   flex-direction: column;
-
   background-color: var(--dusty-blue-lighter);
   padding: 1rem;
+}
+
+.form > .checkBox {
+  align-self: self-start;
+  margin-inline: 0;
+  border-radius: 0;
 }
 
 .label {
@@ -34,14 +39,9 @@
   display: block;
 }
 
-.form input,
-.form select {
-  padding: 0.5rem;
-}
-
-.form select {
-  width: 200px;
-  background: var(--white);
+.select,
+.price {
+  width: 100%;
 }
 
 .button {
@@ -50,7 +50,13 @@
   padding: 0.5rem;
   background: var(--blue);
   color: var(--white);
+  border-radius: 25px;
+  transition: 100ms;
 }
 .button:hover {
   background: var(--hover);
+}
+
+.contactForm {
+  background-color: hotpink;
 }

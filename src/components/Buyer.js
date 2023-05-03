@@ -1,6 +1,10 @@
 import { DistpatchContext } from "@/contexts/buyerContext";
 import { useContext, useState } from "react";
 import { estateTypes } from "@/data/estateTypes";
+import styles from "../pages/buyers/Buyers.module.css";
+import { priceFormatter } from "@/data/buyerProfiles";
+import React from "react";
+import { Radio } from "antd";
 
 export default function Buyer(props) {
   const dispatch = useContext(DistpatchContext);
@@ -35,26 +39,31 @@ export default function Buyer(props) {
       className={`buyerCard ${isChecked ? "checked" : ""}`}
       key={props.id}
     >
-      <p>Buyer ID: #{props.id}</p>
-      <p>Max price: {props.maxPrice}</p>
-      <p>Buyer min size: {props.minSize}</p>
-      <p>Buyer description: {props.description}</p>
-      <p>Takeover date: {props.takeoverDate}</p>
-
-      <p>Estate Type: {getEstateType(props.estateType)}</p>
-      <p>
-        Household: {props.adults} / {props.children}
-      </p>
-
       {isChecked ? (
-        <input
-          type="radio"
+        <Radio
+          className={styles.radioBtn}
           checked={isChecked}
           onChange={() => setIsChecked(isChecked)}
         />
       ) : (
-        <input type="radio" checked={""} />
+        <Radio className={styles.radioBtn} type="radio" checked={""} />
       )}
+      <h3 className={styles.buyerCardh3}>Max price:</h3>
+      <p className={styles.buyerCardPara}>
+        {priceFormatter.format(props.maxPrice)}
+      </p>
+      <h3 className={styles.buyerCardh3}>Buyer min size:</h3>
+      <p className={styles.buyerCardPara}>{props.minSize} m²</p>
+      <h3 className={styles.buyerCardh3}>Buyer description:</h3>
+      <p className={styles.buyerCardPara}>{props.description}</p>
+      <h3 className={styles.buyerCardh3}>Takeover date:</h3>
+      <p className={styles.buyerCardPara}>{props.takeoverDate}</p>
+      <h3 className={styles.buyerCardh3}>Estate Type:</h3>
+      <p className={styles.buyerCardPara}>{getEstateType(props.estateType)}</p>
+      <h3 className={styles.buyerCardh3}>Household:</h3>
+      <p className={styles.buyerCardPara}>
+        adult(s) {props.adults} / child(ren) {props.children}
+      </p>
     </article>
   );
 }

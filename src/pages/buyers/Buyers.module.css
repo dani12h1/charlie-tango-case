@@ -13,9 +13,66 @@
   border: 1px solid var(--dusty-aqua);
   margin-bottom: 1rem;
 }
-.content :first-child {
+/* .content :first-child {
   margin-top: 0;
-}
-.content :last-child {
+} */
+/* .content :last-child {
   margin-bottom: 0;
+  margin-top: 1rem;
+} */
+
+.buyerCardh3 {
+  margin: 0.5rem 0;
+  font-weight: 700;
+  display: block;
+  grid-row: span 1;
+  grid-column: span 2;
+}
+
+.buttonContainer {
+  text-decoration: none;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 90%;
+  display: flex;
+  grid-column: span 2;
+  align-content: center;
+  justify-content: center;
+}
+
+.buyerCardh3:first-of-type {
+  grid-column: span 1;
+}
+
+.buyerCardPara {
+  margin: 0;
+  grid-row: span 1;
+  grid-column: span 2;
+}
+
+.buyerCardPara:nth-of-type(3) {
+  grid-row: span 5;
+  align-self: flex-start;
+}
+.radioBtn {
+  grid-column: 2;
+  grid-row: 1;
+  transition: 100ms;
+  justify-self: end;
+  accent-color: var(--blue);
+  transform: scale(1.5);
+}
+
+.button {
+  transition: 100ms;
+  width: 325px;
+  height: 50px;
+  padding: 0.5rem;
+  background: var(--blue);
+  color: var(--white);
+  border-radius: 25px;
+}
+.button:hover {
+  background: var(--hover);
 }

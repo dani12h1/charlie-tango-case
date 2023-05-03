@@ -2,7 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import styles from "./Buyers.module.css";
-import Buyer from "@/components/Header/Buyer";
+import Buyer from "@/components/Buyer";
 import { useEffect } from "react";
 import { BuyerContext, DistpatchContext } from "@/contexts/buyerContext";
 import { useContext } from "react";
@@ -11,7 +11,7 @@ export default function Buyers({ data }) {
   const dispatch = useContext(DistpatchContext);
   const { query } = useRouter();
   const { buyersList } = useContext(BuyerContext);
-  const state = useContext(BuyerContext);
+
   useEffect(() => {
     //dispatch
     dispatch({
@@ -26,10 +26,15 @@ export default function Buyers({ data }) {
         <title>Find buyer | EDC</title>
       </Head>
       <div className="wrapper">
+        <div className="buyerList"></div>
         <h1 className={styles.headline}>Potential buyers</h1>
 
         <div className={styles.content}>
+<<<<<<< HEAD
           {/* <h2>Query params:</h2>
+=======
+          {/*           <h2>Query params:</h2>
+>>>>>>> styling
           <pre>
             <code>{JSON.stringify({ ...state, ...query }, null, 2)}</code>
           </pre> */}
@@ -38,10 +43,12 @@ export default function Buyers({ data }) {
             {data.map((buyer) => (
               <Buyer key={data.id} {...buyer} />
             ))}
+            <Link className={styles.buttonContainer} href="/contact">
+              <button className={styles.button}>
+                Proceed ({buyersList.length})
+              </button>
+            </Link>
           </section>
-          <Link href="/contact">
-            <button>Proceed ({buyersList.length})</button>
-          </Link>
         </div>
       </div>
     </>

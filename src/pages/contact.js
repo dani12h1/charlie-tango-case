@@ -2,8 +2,9 @@ import Head from "next/head";
 import { BuyerContext, DistpatchContext } from "@/contexts/buyerContext";
 import { useContext } from "react";
 import styles from "./Home.module.css";
-import BuyersList from "@/components/Header/BuyersList";
-
+import BuyersList from "@/components/BuyersList";
+import React from "react";
+import { Checkbox, Input, InputNumber } from "antd";
 export default function Buyers() {
   const state = useContext(BuyerContext);
   const query = useContext(BuyerContext);
@@ -12,13 +13,17 @@ export default function Buyers() {
       <Head>
         <title>Find buyer | EDC</title>
       </Head>
+
       <div className="wrapper">
-        <pre>{JSON.stringify({ ...state, ...query }, null, 2)}</pre>
-        <div className="refList">
-          <BuyersList />
-          <ContactForm {...query} {...state} />
+        <h1 className={styles.headline}>Contact Info</h1>
+        <div className={styles.content}>
+          {/*         <pre>{JSON.stringify({ ...state, ...query }, null, 2)}</pre> */}
+          <div className="refList">
+            <ContactForm {...query} {...state} />
+            <BuyersList />
+          </div>
+          <div className="contactForm"></div>
         </div>
-        <div className="contactForm"></div>
       </div>
     </>
   );
@@ -84,18 +89,29 @@ export function ContactForm(query) {
     >
       <label>
         <span className={styles.label}>Name</span>
-        <input name="name" required />
+        <Input className="inputs" name="name" required />
       </label>
       <label>
         <span className={styles.label}>E-mail</span>
-        <input name="email" required type="email" />
+        <Input className="inputs" name="email" required type="email" />
       </label>
       <label>
         <span className={styles.label}>Phone number</span>
-        <input name="phone" required type="tel" maxLength={8} />
+        <InputNumber
+          className="inputs"
+          name="phone"
+          required
+          type="tel"
+          maxLength={8}
+        />
       </label>
+<<<<<<< HEAD
       <input name="checkbox" type="checkbox"></input>
       <button onSubmit={submitted} className={styles.button}>
+=======
+      <Checkbox className={styles.checkBox} name="checkbox" />
+      <button className={styles.button} type="submit">
+>>>>>>> styling
         Submit
       </button>
     </form>
