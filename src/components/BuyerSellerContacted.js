@@ -2,10 +2,14 @@
 export function BuyerSellerContacted(props) {
   return (
     <article>
-      <p>Name: {props.contacted.name}</p>
-      <p>Email: {props.contacted.email}</p>
-      <p>Phone: {props.contacted.phone}</p>
-      <p>Contacted: {props.contacted.contacted ? "Yes" : "No"}</p>
+      <h3>Name:</h3>
+      <p>{props.contacted.name}</p>
+      <h3>Email:</h3>
+      <p>{props.contacted.email}</p>
+      <h3>Phone:</h3>
+      <p>{props.contacted.phone}</p>
+      <h3>Contacted:</h3>
+      <p>{props.contacted.contacted ? "Yes" : "No"}</p>
     </article>
   );
 }

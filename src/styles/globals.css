@@ -105,17 +105,34 @@ body {
   margin-bottom: 2rem;
 }
 
-.ContactedList {
+.ContactedList,
+.DashboardList {
   display: flex;
   flex-direction: column;
   gap: 25px;
 }
 
-.ContactedList > article {
+.ContactedList > article,
+.DashboardList > article {
+  display: grid;
+  grid-template-rows: repeat(8, 1.2rem);
+  grid-template-columns: 1fr 1fr;
+  grid-auto-flow: column;
+  gap: 10px;
   background-color: var(--white);
   box-shadow: 2px 3px 5px var(--dark-grey);
   padding: 1rem;
   border-radius: 15px;
+}
+
+article > p,
+article > h3 {
+  margin: 0;
+}
+
+#dashBtn {
+  float: inline-end;
+  grid-row: 7 / span 2;
 }
 
 .buyerContainer {

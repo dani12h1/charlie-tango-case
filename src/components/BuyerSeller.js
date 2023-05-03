@@ -1,3 +1,5 @@
+import styles from "../pages/Home.module.css";
+
 // A single item on the DashboardList
 export function BuyerSeller(props) {
   const createdAt = new Date(props.buyerSeller.created_at);
@@ -6,18 +8,30 @@ export function BuyerSeller(props) {
   }-${createdAt.getFullYear()} ${createdAt.getHours()}:${createdAt.getMinutes()}`;
 
   return (
-    <section>
-      <p>ID: {props.buyerSeller.id}</p>
-      <p>Name: {props.buyerSeller.name}</p>
-      <p>Email: {props.buyerSeller.email}</p>
-      <p>Phone: {props.buyerSeller.phone}</p>
-      <p>Created at: {formattedDate}</p>
-      <p>Contacted: {`${props.buyerSeller.sellerContacted ? "Yes" : "No"}`}</p>
-      <p>Consent: {`${props.buyerSeller.checkbox}`}</p>
-      <p>Size: {props.buyerSeller.minSize} kvdm</p>
-      <button onClick={() => props.handleContacted(props.buyerSeller)}>
+    <article>
+      <h3>ID:</h3>
+      <p>{props.buyerSeller.id}</p>
+      <h3>Name:</h3>
+      <p>{props.buyerSeller.name}</p>
+      <h3>Email:</h3>
+      <p>{props.buyerSeller.email}</p>
+      <h3>Phone:</h3>
+      <p>{props.buyerSeller.phone}</p>
+      <h3>Created at:</h3>
+      <p>{formattedDate}</p>
+      <h3>Contacted:</h3>
+      <p>{`${props.buyerSeller.sellerContacted ? "Yes" : "No"}`}</p>
+      <h3>Consent:</h3>
+      <p>{`${props.buyerSeller.checkbox}`}</p>
+      <h3>Size:</h3>
+      <p>{props.buyerSeller.minSize} kvdm</p>
+      <button
+        className={styles.button}
+        id="dashBtn"
+        onClick={() => props.handleContacted(props.buyerSeller)}
+      >
         Contacted
       </button>
-    </section>
+    </article>
   );
 }
