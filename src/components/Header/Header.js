@@ -10,7 +10,7 @@ export function Header() {
 
   return (
     <>
-      <header className="wrapper">
+      <header className="wrapper headerWrapper">
         <Link href="/" aria-label="EDC">
           <Image
             className={styles.logo}
@@ -25,8 +25,8 @@ export function Header() {
           <button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
+              width="25"
+              height="25"
               fill="currentColor"
               class="bi bi-person-circle"
               viewBox="0 0 16 16"

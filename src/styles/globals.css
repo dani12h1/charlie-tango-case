@@ -48,6 +48,12 @@ body {
   padding: 0 1rem;
   margin: 0 auto;
 }
+
+.headerWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .dashboard_wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -148,7 +154,11 @@ body {
   background-color: var(--blue);
 }
 
-/* .checkBox {
- 
+.thankyouh2 {
+  text-align: center;
+}
 
-} */
+.thankyouh3 {
+  text-align: center;
+  font-weight: 500;
+}

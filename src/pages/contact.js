@@ -5,6 +5,7 @@ import styles from "./Home.module.css";
 import BuyersList from "@/components/BuyersList";
 import React from "react";
 import { Checkbox, Input, InputNumber } from "antd";
+import Link from "next/link";
 export default function Buyers() {
   const state = useContext(BuyerContext);
   const query = useContext(BuyerContext);
@@ -106,6 +107,7 @@ export function ContactForm(query) {
         />
       </label>
       <Checkbox className={styles.checkBox} name="checkbox" />
+
       <button onSubmit={submitted} className={styles.button} type="submit">
         Submit
       </button>
