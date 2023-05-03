@@ -99,8 +99,20 @@ body {
   justify-content: space-around;
 }
 
-.buyerContainer,
 .ContactedList {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.ContactedList > article {
+  background-color: var(--white);
+  box-shadow: 2px 3px 5px var(--dark-grey);
+  padding: 1rem;
+  border-radius: 15px;
+}
+
+.buyerContainer {
   display: grid;
   grid-template-columns: repeat(auto-fill, 325px);
   gap: 50px;
@@ -154,7 +166,7 @@ body {
 .buyerRef {
   list-style: none;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .buyerRef > button {
@@ -196,4 +208,11 @@ body {
 .thankyouh3 {
   text-align: center;
   font-weight: 500;
+}
+
+.thankyouImage {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: saturate(0.7);
 }

@@ -1,11 +1,10 @@
 import Head from "next/head";
-import { BuyerContext, DistpatchContext } from "@/contexts/buyerContext";
+import { BuyerContext } from "@/contexts/buyerContext";
 import { useContext } from "react";
 import styles from "./Home.module.css";
-import BuyersList from "@/components/BuyersList";
-import React from "react";
-import { Checkbox, Input, InputNumber } from "antd";
-import Link from "next/link";
+import Image from "next/image";
+import thankYouIMG from "../assets/thankyou.jpeg";
+
 export default function Buyers() {
   const state = useContext(BuyerContext);
   const query = useContext(BuyerContext);
@@ -23,6 +22,11 @@ export default function Buyers() {
             We will contact you shortly with further information about a
             non-binding sales assessment.
           </h3>
+          <Image
+            className="thankyouImage"
+            src={thankYouIMG}
+            alt="people smiling and agreeing and having a really good time because they have gotten themselves a house.. You see, these people have been through a lot lately, especially after the COVID pandemic hit and they had to sell their family business."
+          ></Image>
         </div>
       </div>
     </>
