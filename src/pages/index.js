@@ -3,6 +3,8 @@ import styles from "./Home.module.css";
 import { estateTypes } from "@/data/estateTypes";
 import React from "react";
 import { useState } from "react";
+import Image from "next/image";
+import housePic from "../assets/hus.jpeg";
 
 import {
   Button,
@@ -26,10 +28,16 @@ export default function Home() {
         <h1 className={styles.headline}>Find a buyer</h1>
 
         <div className={styles.content}>
-          <h2>Estate infomation</h2>
-          <p>Insert your estate information to find a match</p>
-
-          <SellerEstateForm />
+          <div className={styles.formGrid}>
+            <div className="grid_1">
+              <h2>Estate infomation</h2>
+              <p>Insert your estate information to find a match</p>
+              <SellerEstateForm />
+            </div>
+            <div className="grid_2">
+              <Image alt="house" src={housePic}></Image>
+            </div>
+          </div>
         </div>
       </div>
     </>

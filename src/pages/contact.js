@@ -5,6 +5,8 @@ import styles from "./Home.module.css";
 import BuyersList from "@/components/BuyersList";
 import React from "react";
 import { Checkbox, Input, InputNumber } from "antd";
+import Image from "next/image";
+import contactImage from "../assets/RE_agent.jpg";
 import Link from "next/link";
 export default function Buyers() {
   const state = useContext(BuyerContext);
@@ -21,7 +23,12 @@ export default function Buyers() {
           {/*         <pre>{JSON.stringify({ ...state, ...query }, null, 2)}</pre> */}
           <div className="refList">
             <ContactForm {...query} {...state} />
-            <BuyersList />
+            <BuyersList className="buyerList" />
+            <Image
+              className="contactImage"
+              src={contactImage}
+              alt="Real estate agent"
+            />
           </div>
           <div className="contactForm"></div>
         </div>
@@ -82,36 +89,43 @@ export function ContactForm(query) {
   }
 
   return (
-    <form
-      /* action="/buyers" */
-      method="GET"
-      className={styles.form}
-      onSubmit={handleSubmit}
-    >
-      <label>
-        <span className={styles.label}>Name</span>
-        <Input className="inputs" name="name" required />
-      </label>
-      <label>
-        <span className={styles.label}>E-mail</span>
-        <Input className="inputs" name="email" required type="email" />
-      </label>
-      <label>
-        <span className={styles.label}>Phone number</span>
-        <InputNumber
-          className="inputs"
-          name="phone"
-          required
-          type="tel"
-          maxLength={8}
-        />
-      </label>
-      <Checkbox className={styles.checkBox} name="checkbox" />
+    <div className="contactForm">
+      <form
+        /* action="/buyers" */
+        method="GET"
+        className={styles.form}
+        onSubmit={handleSubmit}
+      >
+        <label>
+          <span className={styles.label}>Name</span>
+          <Input className="inputs" name="name" required />
+        </label>
+        <label>
+          <span className={styles.label}>E-mail</span>
+          <Input className="inputs" name="email" required type="email" />
+        </label>
+        <label>
+          <span className={styles.label}>Phone number</span>
+          <InputNumber
+            className="inputs"
+            name="phone"
+            required
+            type="tel"
+            maxLength={8}
+          />
+        </label>
+        <Checkbox className={styles.checkBox} name="checkbox">
+          <p>
+            Yes please, EDC may contact me with offers and information related
+            to the real estate market
+          </p>
+        </Checkbox>
 
-      <button onSubmit={submitted} className={styles.button} type="submit">
-        Submit
-      </button>
-    </form>
+        <button onSubmit={submitted} className={styles.button} type="submit">
+          Submit
+        </button>
+      </form>
+    </div>
   );
 }
 

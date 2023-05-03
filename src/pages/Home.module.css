@@ -20,6 +20,19 @@
   margin-bottom: 0;
 }
 
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 25px;
+}
+
+.formGrid img {
+  aspect-ratio: 1 / 1;
+  max-width: 100%;
+  height: auto;
+  filter: saturate(0.8);
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -29,8 +42,13 @@
 
 .form > .checkBox {
   align-self: self-start;
+  margin-top: 1rem;
   margin-inline: 0;
   border-radius: 0;
+}
+
+.form p {
+  margin-top: 0;
 }
 
 .label {

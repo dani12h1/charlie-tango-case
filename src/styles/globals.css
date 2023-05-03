@@ -132,13 +132,29 @@ body {
 .refList {
   display: grid;
   grid-template-columns: 1fr 2fr;
+  grid-auto-rows: auto;
   gap: 20px;
 }
 
+.buyersList {
+  grid-row: 1;
+}
+
+.contactForm {
+  grid-row: 2;
+}
+
+.contactImage {
+  grid-row: 2;
+  max-width: 100%;
+  aspect-ratio: 6/4.9;
+  height: auto;
+  object-fit: cover;
+}
 .buyerRef {
   list-style: none;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .buyerRef > button {
