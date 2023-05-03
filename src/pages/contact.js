@@ -8,6 +8,8 @@ import { Checkbox, Input, InputNumber } from "antd";
 import Image from "next/image";
 import contactImage from "../assets/RE_agent.jpg";
 import Link from "next/link";
+import { useRouter } from "next/router";
+
 export default function Buyers() {
   const state = useContext(BuyerContext);
   const query = useContext(BuyerContext);
@@ -38,11 +40,13 @@ export default function Buyers() {
 }
 
 export function ContactForm(query) {
-  function submitted(e) {
-    e.preventDefault();
-    console.log("PREVENTED");
-  }
   const dispatch = useContext(DistpatchContext);
+  const router = useRouter();
+
+  // function submitted(e) {
+  //   e.preventDefault();
+  //   console.log("PREVENTED");
+  // }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -86,6 +90,7 @@ export function ContactForm(query) {
     })
       .then((res) => res.json())
       .then((data) => console.log(data));
+    router.push("/thankYou");
   }
 
   return (
@@ -120,8 +125,8 @@ export function ContactForm(query) {
             to the real estate market
           </p>
         </Checkbox>
-        {/*         <Link href="/thankYou"></Link> */}
-        <button onSubmit={submitted} className={styles.button} type="submit">
+
+        <button type="submit" className={styles.button}>
           Submit
         </button>
       </form>
