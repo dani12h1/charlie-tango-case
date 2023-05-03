@@ -119,7 +119,7 @@ export function ContactForm(query) {
 }
 
 export async function getServerSideProps(context) {
-  const api = `https://charlie-tango-case-oj89.vercel.api/api/find-buyers?price=${context.query.price}&propertySize=${context.query.minSize}&zipCode=${context.query.zipCode}&propertyType=${context.query.propertyType}`;
+  const api = `https://charlie-tango-case-oj89.vercel.app/api/find-buyers?price=${context.query.price}&propertySize=${context.query.minSize}&zipCode=${context.query.zipCode}&propertyType=${context.query.propertyType}`;
   const res = await fetch(api);
   const data = await res.json();
 
