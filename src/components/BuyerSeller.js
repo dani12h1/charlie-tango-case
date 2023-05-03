@@ -30,7 +30,7 @@ export function BuyerSeller(props) {
         id="dashBtn"
         onClick={() => props.handleContacted(props.buyerSeller)}
       >
-        Contacted
+        Close ticket
       </button>
     </article>
   );
