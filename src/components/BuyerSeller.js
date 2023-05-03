@@ -22,7 +22,7 @@ export function BuyerSeller(props) {
       <h3>Contacted:</h3>
       <p>{`${props.buyerSeller.sellerContacted ? "Yes" : "No"}`}</p>
       <h3>Consent:</h3>
-      <p>{`${props.buyerSeller.checkbox}`}</p>
+      <p>{`${props.buyerSeller.checkbox ? "Yes" : "No"}`}</p>
       <h3>Size:</h3>
       <p>{props.buyerSeller.minSize} kvdm</p>
       <button
