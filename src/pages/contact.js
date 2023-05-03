@@ -22,7 +22,6 @@ export default function Buyers() {
       <div className="wrapper">
         <h1 className={styles.headline}>Contact Info</h1>
         <div className={styles.content}>
-          {/*         <pre>{JSON.stringify({ ...state, ...query }, null, 2)}</pre> */}
           <div className="refList">
             <ContactForm {...query} {...state} />
             <BuyersList className="buyerList" />
@@ -42,11 +41,6 @@ export default function Buyers() {
 export function ContactForm(query) {
   const dispatch = useContext(DistpatchContext);
   const router = useRouter();
-
-  // function submitted(e) {
-  //   e.preventDefault();
-  //   console.log("PREVENTED");
-  // }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -68,16 +62,6 @@ export function ContactForm(query) {
       ...query,
       ...formData,
       buyersList: query.buyersList,
-
-      // name: query.name,
-      // email: query.email,
-      // phone: query.phone,
-      // price: query.price,
-      // size: query.minSize,
-      // zip: query.zipCode,
-      // propertyType: query.propertyType,
-      // consent: query.checkbox,
-      // buyersList: query.buyersList,
     };
 
     console.log(payload);
