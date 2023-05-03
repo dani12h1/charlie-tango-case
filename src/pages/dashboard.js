@@ -65,38 +65,48 @@ export default function Dashboard() {
 
   return (
     <>
-      <div className="dashboard_wrapper">
+      <div className="wrapper">
         <div className="dashboard_header">
           <h1 className={styles.headline}>Dashboard</h1>
         </div>
-
-        <div className="dashboard_buttons">
-          <button onClick={() => handleListButtonClick("dashboard")}>
-            Open{" "}
-            {
-              dashboardBuyers.filter((seller) => seller.contacted === false)
-                .length
-            }
-          </button>
-          <button onClick={() => handleListButtonClick("contacted")}>
-            Closed {dashboardBuyers.filter((seller) => seller.contacted).length}
-          </button>
+        <div className={styles.content}>
+          <div className="dashboard_buttons">
+            <button
+              className={styles.button}
+              onClick={() => handleListButtonClick("dashboard")}
+            >
+              Open{" "}
+              {
+                dashboardBuyers.filter((seller) => seller.contacted === false)
+                  .length
+              }
+            </button>
+            <button
+              className={styles.button}
+              onClick={() => handleListButtonClick("contacted")}
+            >
+              Closed{" "}
+              {dashboardBuyers.filter((seller) => seller.contacted).length}
+            </button>
+          </div>
+          {/* Shows the list depending on wether or not "dashboard" is clicked */}
+          {activeList === "dashboard" ? (
+            <DashboardList
+              handleContacted={handleContacted}
+              className="DashboardList"
+              dashboardBuyers={dashboardBuyers.filter(
+                (buyer) => !buyer.contacted
+              )}
+            />
+          ) : (
+            <ContactedList
+              className="ContactedList"
+              dashboardBuyers={dashboardBuyers.filter(
+                (buyer) => buyer.contacted
+              )}
+            />
+          )}
         </div>
-        {/* Shows the list depending on wether or not "dashboard" is clicked */}
-        {activeList === "dashboard" ? (
-          <DashboardList
-            handleContacted={handleContacted}
-            className="DashboardList"
-            dashboardBuyers={dashboardBuyers.filter(
-              (buyer) => !buyer.contacted
-            )}
-          />
-        ) : (
-          <ContactedList
-            className="ContactedList"
-            dashboardBuyers={dashboardBuyers.filter((buyer) => buyer.contacted)}
-          />
-        )}
       </div>
     </>
   );

@@ -4,7 +4,7 @@ import { BuyerSeller } from "./BuyerSeller";
 export function DashboardList(props) {
   return (
     <>
-      <h2>Open tickets</h2>
+      <h2 className="dashboardHeader">Open tickets</h2>
       <ul className="buyerContainer">
         {/* Receives the props.artcles from the App component */}
         {props.dashboardBuyers.map((buyerSeller) => (
