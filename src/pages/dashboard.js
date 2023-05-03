@@ -7,6 +7,7 @@ import { DashboardContext, DashboardSetContext } from "./_app";
 export default function Dashboard() {
   const dashboardBuyers = useContext(DashboardContext);
   const setDashboardBuyers = useContext(DashboardSetContext);
+  const [selectedButton, setSelectedButton] = useState("dashboard");
   const [activeList, setActiveList] = useState("dashboard");
 
   useEffect(() => {
@@ -22,8 +23,9 @@ export default function Dashboard() {
       });
   }, [setDashboardBuyers]);
 
-  function handleListButtonClick(listType) {
-    setActiveList(listType);
+  function handleListButtonClick(buttonType) {
+    setActiveList(buttonType);
+    setSelectedButton(buttonType);
   }
 
   function handleContacted(buyerSeller) {
@@ -70,6 +72,9 @@ export default function Dashboard() {
           <h1 className={styles.headline}>Dashboard</h1>
         </div>
         <div className={styles.content}>
+          <h2 className="dashboardHeader">
+            {selectedButton === "dashboard" ? "Open tickets" : "Closed tickets"}
+          </h2>
           <div className="dashboard_buttons">
             <button
               className={styles.button}

@@ -4,7 +4,6 @@ import { BuyerSellerContacted } from "./BuyerSellerContacted";
 export function ContactedList(props) {
   return (
     <>
-      <h2 className="dashboardHeader">Closed tickets</h2>
       <div className="ContactedList">
         {props.dashboardBuyers.map((contacted) => (
           <BuyerSellerContacted

@@ -120,11 +120,10 @@ export function ContactForm(query) {
             to the real estate market
           </p>
         </Checkbox>
-        <Link href="/thankYou">
-          <button onSubmit={submitted} className={styles.button} type="submit">
-            Submit
-          </button>
-        </Link>
+        {/*         <Link href="/thankYou"></Link> */}
+        <button onSubmit={submitted} className={styles.button} type="submit">
+          Submit
+        </button>
       </form>
     </div>
   );

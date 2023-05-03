@@ -4,11 +4,8 @@ import { Select } from "antd";
 
 export default function EstOption() {
   return estateTypes.map((estate) => (
-    /*     <option key={estate.id} value={estate.id}>
+    <option key={estate.id} value={estate.id}>
       {estate.name}
-    </option> */
-    <Select.Option key={estate.id} value={estate.id}>
-      {estate.name}
-    </Select.Option>
+    </option>
   ));
 }

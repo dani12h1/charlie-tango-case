@@ -71,6 +71,7 @@
   color: var(--white);
   border-radius: 25px;
   transition: 100ms;
+  cursor: pointer;
 }
 .button:hover {
   background: var(--hover);

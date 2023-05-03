@@ -17,6 +17,7 @@ import {
   Radio,
   Select,
 } from "antd";
+import EstOption from "@/components/EstateOpt";
 
 export default function Home() {
   return (
@@ -93,18 +94,14 @@ export function SellerEstateForm() {
       </label>
       <label>
         <span className={styles.label}>Property type</span>
-        <Select
+        <select
           className="inputs"
           id="selectInput"
           name="propertyType"
           placeholder="Please choose..."
         >
-          {estateTypes.map((estate) => (
-            <Select.Option key={estate.id} value={estate.id}>
-              {estate.name}
-            </Select.Option>
-          ))}
-        </Select>
+          <EstOption />
+        </select>
       </label>
       <button className={styles.button} type="submit">
         Submit
