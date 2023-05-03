@@ -81,6 +81,10 @@ body {
   padding: 8px 11px;
 }
 
+.firstOpt {
+  color: rgba(0, 0, 0, 0.419);
+}
+
 .DashboardList {
   grid-column: 1 / 3;
 }

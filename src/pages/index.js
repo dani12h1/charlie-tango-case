@@ -48,6 +48,21 @@ export default function Home() {
 export function SellerEstateForm() {
   const [rawPrice, setRawPrice] = useState(750000);
   const [rawSize, setRawSize] = useState(120);
+  const [propertyType, setPropertyType] = useState("");
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    if (propertyType === "") {
+      alert("Please select a valid option");
+    } else {
+      // Submit the form
+    }
+  }
+
+  function handleSelectChange(event) {
+    setPropertyType(event.target.value);
+  }
+
   function onChangeSize(value) {
     setRawSize(value);
     // Pass the rawValue to the parent component
@@ -57,14 +72,20 @@ export function SellerEstateForm() {
     // Pass the rawValue to the parent component
   }
   return (
-    <form action="/buyers" method="GET" className={styles.form}>
+    <form
+      onSubmit={handleSubmit}
+      action="/buyers"
+      method="GET"
+      className={styles.form}
+    >
       <input type="hidden" name="price" value={rawPrice}></input>
       <input type="hidden" name="minSize" value={rawSize}></input>
       <label>
         <span className={styles.label}>Price</span>
         <InputNumber
           className="inputs"
-          defaultValue={750000}
+          placeholder="DKK 750.000"
+          defaultValue=""
           formatter={(value) =>
             `DKK ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ".")
           }
@@ -78,7 +99,8 @@ export function SellerEstateForm() {
         <span className={styles.label}>Size in square metres</span>
         <InputNumber
           className="inputs"
-          defaultValue={120}
+          placeholder="m² 120"
+          defaultValue=""
           formatter={(value) =>
             `m² ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ".")
           }
@@ -90,16 +112,19 @@ export function SellerEstateForm() {
       </label>
       <label>
         <span className={styles.label}>Zip Code</span>
-        <Input className="inputs" name="zipCode" required />
+        <Input
+          placeholder="e.g. 2200"
+          className="inputs"
+          name="zipCode"
+          required
+        />
       </label>
       <label>
         <span className={styles.label}>Property type</span>
-        <select
-          className="inputs"
-          id="selectInput"
-          name="propertyType"
-          placeholder="Please choose..."
-        >
+        <select className="inputs" id="selectInput" name="propertyType">
+          <option onChange={handleSelectChange} value="" disabled selected>
+            Please choose...
+          </option>
           <EstOption />
         </select>
       </label>
