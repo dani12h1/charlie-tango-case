@@ -106,7 +106,7 @@ export function ContactForm(query) {
         />
       </label>
       <Checkbox className={styles.checkBox} name="checkbox" />
-      <button className={styles.button} type="submit">
+      <button onSubmit={submitted} className={styles.button} type="submit">
         Submit
       </button>
     </form>
