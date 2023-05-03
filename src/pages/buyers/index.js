@@ -30,11 +30,7 @@ export default function Buyers({ data }) {
         <h1 className={styles.headline}>Potential buyers</h1>
 
         <div className={styles.content}>
-<<<<<<< HEAD
-          {/* <h2>Query params:</h2>
-=======
           {/*           <h2>Query params:</h2>
->>>>>>> styling
           <pre>
             <code>{JSON.stringify({ ...state, ...query }, null, 2)}</code>
           </pre> */}

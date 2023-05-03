@@ -105,13 +105,8 @@ export function ContactForm(query) {
           maxLength={8}
         />
       </label>
-<<<<<<< HEAD
-      <input name="checkbox" type="checkbox"></input>
-      <button onSubmit={submitted} className={styles.button}>
-=======
       <Checkbox className={styles.checkBox} name="checkbox" />
       <button className={styles.button} type="submit">
->>>>>>> styling
         Submit
       </button>
     </form>
