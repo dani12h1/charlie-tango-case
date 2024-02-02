@@ -50,14 +50,14 @@ export function SellerEstateForm() {
   const [rawSize, setRawSize] = useState(120);
   const [propertyType, setPropertyType] = useState("");
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    if (propertyType === "") {
-      alert("Please select a valid option");
-    } else {
-      // Submit the form
-    }
-  }
+  // function handleSubmit(event) {
+  //   event.preventDefault();
+  //   if (propertyType === "") {
+  //     alert("Please select a valid option");
+  //   } else {
+  //     // Submit the form
+  //   }
+  // }
 
   function handleSelectChange(event) {
     setPropertyType(event.target.value);
@@ -73,7 +73,7 @@ export function SellerEstateForm() {
   }
   return (
     <form
-      onSubmit={handleSubmit}
+      // onSubmit={handleSubmit}
       action="/buyers"
       method="GET"
       className={styles.form}
